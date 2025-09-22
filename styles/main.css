@@ -174,3 +174,51 @@ body {
     width: 20px;
     height: 20px;
 }
+/* --- New CSS for the Golf Page --- */
+
+.golf-entry-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.golf-entry-item {
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.golf-entry-item-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.golf-entry-item-row:last-child {
+    margin-bottom: 0;
+}
+
+.golf-entry-label {
+    font-weight: 600;
+    min-width: 80px;
+    color: #555;
+}
+
+.golf-notes-label {
+    margin-bottom: 0.5rem;
+    display: block;
+    font-weight: 600;
+    color: #555;
+}
+
+.golf-entry-item .input-field {
+    flex-grow: 1;
+}
+
+.golf-entry-item .textarea-field {
+    width: 100%;
+    min-height: 80px;
+}
