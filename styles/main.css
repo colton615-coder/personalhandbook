@@ -1,3 +1,80 @@
+/*
+ * Please copy and paste these new and updated CSS rules
+ * into your 'styles/main.css' file.
+ */
+
+/* --- CSS for the Shopping Page --- */
+
+/* Base styling for all list items */
+.list-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    background-color: #fcfcfc;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, opacity 0.3s, text-decoration 0.3s;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.list-item:hover {
+    background-color: #f5f8fa;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+}
+
+/* New CSS class for completed items */
+.list-item.completed {
+    opacity: 0.6; /* Fades the item slightly */
+    text-decoration: line-through;
+    color: #95a5a6; /* Changes the text color to a soft grey */
+}
+
+.list-item.completed .list-item-checkbox {
+    accent-color: #95a5a6; /* Changes the checkbox color */
+}
+
+.list-item-checkbox {
+    width: 22px;
+    height: 22px;
+    accent-color: var(--accent-color);
+}
+
+.list-item-text {
+    font-size: 1rem;
+    color: var(--text-color);
+    flex-grow: 1;
+}
+
+.list-item-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.list-item .delete-btn {
+    background: none;
+    border: none;
+    color: var(--secondary-color);
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 0 0.5rem;
+    transition: color 0.2s ease;
+}
+
+.list-item .delete-btn:hover {
+    color: #c0392b;
+}
+
+.add-item-row {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.add-item-row .button {
+    padding: 0.7rem 1.2rem;
+    white-space: nowrap;
+}
 /* ========================================= */
 /* WORKOUTS PAGE STYLING                   */
 /* ========================================= */
