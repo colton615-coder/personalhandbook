@@ -3,50 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workouts</title>
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/additional-pages.css">
+    <title>My Workout Tracker</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header class="navbar">
-        <nav class="nav-links">
-            <a href="index.html" class="nav-item">Dashboard</a>
-            <a href="time-blocks.html" class="nav-item">Time Blocks</a>
-            <a href="tasks.html" class="nav-item">Tasks</a>
-            <a href="projects.html" class="nav-item">Projects</a>
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="index.html" class="nav-item">Home</a>
             <a href="workouts.html" class="nav-item active">Workouts</a>
-            <a href="golf.html" class="nav-item">Golf</a>
-            <a href="shopping.html" class="nav-item">Shopping List</a>
-            <a href="calendar.html" class="nav-item">Calendar</a>
-        </nav>
-    </header>
+            <a href="nutrition.html" class="nav-item">Nutrition</a>
+        </div>
+    </nav>
 
     <main class="content-container">
-        <section class="card">
-            <h2>🏋️‍♂️ Workouts</h2>
-            <div class="input-group workout-form">
-                <input type="text" id="workout-name" placeholder="Exercise name" class="input-field">
-                <input type="number" id="workout-sets" placeholder="Sets" class="input-field small-input">
-                <input type="number" id="workout-reps" placeholder="Reps" class="input-field small-input">
-                <button id="add-workout-btn" class="button">Add Exercise</button>
-            </div>
-            <table class="data-table" id="workout-table">
-                <thead>
-                    <tr>
-                        <th>Exercise</th>
-                        <th>Sets</th>
-                        <th>Reps</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </section>
-    </main>
+        <h1 class="title">My Weekly Workout Plan</h1>
+        <p class="subtitle">Track your progress and stay on top of your goals.</p>
 
-    <script src="scripts/workouts.js"></script>
+        <div class="card" id="monday">
+            <h2>Monday</h2>
+            <div class="exercise-list">
+                </div>
+            <button class="button add-exercise-btn">Add Exercise</button>
+        </div>
+
+        <div class="card" id="tuesday">
+            <h2>Tuesday</h2>
+            <div class="exercise-list"></div>
+            <button class="button add-exercise-btn">Add Exercise</button>
+        </div>
+        
+        <div class="card" id="wednesday">
+            <h2>Wednesday</h2>
+            <div class="exercise-list"></div>
+            <button class="button add-exercise-btn">Add Exercise</button>
+        </div>
+        
+        <div class="card" id="thursday">
+            <h2>Thursday</h2>
+            <div class="exercise-list"></div>
+            <button class="button add-exercise-btn">Add Exercise</button>
+        </div>
+        
+        <div class="card" id="friday">
+            <h2>Friday</h2>
+            <div class="exercise-list"></div>
+            <button class="button add-exercise-btn">Add Exercise</button>
+        </div>
+
+    </main>
+    
+    <script src="workouts.js"></script>
 
 </body>
 </html>
