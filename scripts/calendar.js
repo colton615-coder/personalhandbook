@@ -1,60 +1,82 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const calendarGrid = document.getElementById('calendar-grid');
-    const currentMonthYear = document.getElementById('current-month-year');
-    const prevMonthBtn = document.getElementById('prev-month-btn');
-    const nextMonthBtn = document.getElementById('next-month-btn');
+    const calendarContainer = document.querySelector('.calendar-container');
 
+    // Get the current date
     let currentDate = new Date();
 
+    // Function to render the calendar
     function renderCalendar() {
-        calendarGrid.innerHTML = '';
-        const year = currentDate.getFullYear();
+        // Clear existing calendar content
+        calendarContainer.innerHTML = '';
+
         const month = currentDate.getMonth();
+        const year = currentDate.getFullYear();
+        const firstDayOfMonth = new Date(year, month, 1);
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const startDayOfWeek = firstDayOfMonth.getDay();
 
-        // Set month and year in header
-        currentMonthYear.textContent = currentDate.toLocaleDateString('en-US', {
-            month: 'long',
-            year: 'numeric'
+        // Create the calendar header (Month and Year)
+        const header = document.createElement('div');
+        header.classList.add('calendar-header');
+        header.innerHTML = `
+            <button class="calendar-nav-btn" id="prev-btn">&lt;</button>
+            <h3>${currentDate.toLocaleString('default', { month: 'long', year: 'numeric' })}</h3>
+            <button class="calendar-nav-btn" id="next-btn">&gt;</button>
+        `;
+        calendarContainer.appendChild(header);
+
+        // Add event listeners for navigation buttons
+        document.getElementById('prev-btn').addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar();
         });
 
-        // Add day names
-        const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-        dayNames.forEach(day => {
-            const dayHeader = document.createElement('div');
-            dayHeader.className = 'calendar-day-header';
-            dayHeader.textContent = day;
-            calendarGrid.appendChild(dayHeader);
+        document.getElementById('next-btn').addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar();
         });
 
-        // Get first and last day of the month
-        const firstDayOfMonth = new Date(year, month, 1).getDay();
-        const lastDayOfMonth = new Date(year, month + 1, 0).getDate();
+        // Create the weekdays header
+        const weekdayHeader = document.createElement('div');
+        weekdayHeader.classList.add('calendar-grid');
+        const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        weekdays.forEach(day => {
+            const dayElement = document.createElement('div');
+            dayElement.classList.add('weekday-header');
+            dayElement.textContent = day;
+            weekdayHeader.appendChild(dayElement);
+        });
+        calendarContainer.appendChild(weekdayHeader);
 
-        // Add empty days for alignment
-        for (let i = 0; i < firstDayOfMonth; i++) {
-            const emptyDay = document.createElement('div');
-            emptyDay.className = 'calendar-day empty';
-            calendarGrid.appendChild(emptyDay);
+        // Create the calendar grid for the days
+        const calendarGrid = document.createElement('div');
+        calendarGrid.classList.add('calendar-grid');
+        
+        // Add inactive cells for days from the previous month
+        for (let i = 0; i < startDayOfWeek; i++) {
+            const emptyCell = document.createElement('div');
+            emptyCell.classList.add('calendar-cell', 'inactive');
+            calendarGrid.appendChild(emptyCell);
         }
 
-        // Add days of the month
-        for (let day = 1; day <= lastDayOfMonth; day++) {
-            const dayCell = document.createElement('div');
-            dayCell.className = 'calendar-day current-month';
-            dayCell.innerHTML = `<span class="calendar-day-number">${day}</span>`;
-            calendarGrid.appendChild(dayCell);
+        // Add cells for the days of the current month
+        for (let day = 1; day <= daysInMonth; day++) {
+            const cell = document.createElement('div');
+            cell.classList.add('calendar-cell');
+            cell.innerHTML = `<span class="calendar-cell-date">${day}</span>`;
+            
+            // Highlight the current day
+            const today = new Date();
+            if (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+                cell.classList.add('current-day');
+            }
+
+            calendarGrid.appendChild(cell);
         }
+
+        calendarContainer.appendChild(calendarGrid);
     }
-
-    prevMonthBtn.addEventListener('click', () => {
-        currentDate.setMonth(currentDate.getMonth() - 1);
-        renderCalendar();
-    });
-
-    nextMonthBtn.addEventListener('click', () => {
-        currentDate.setMonth(currentDate.getMonth() + 1);
-        renderCalendar();
-    });
-
+    
+    // Initial render of the calendar
     renderCalendar();
 });
