@@ -1,26 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Select the add round, add session, and clear all buttons
     const addRoundBtn = document.querySelector('.add-round-btn');
     const addSessionBtn = document.querySelector('.add-session-btn');
     const clearAllBtn = document.querySelector('.clear-all-golf-btn');
 
-    // Add event listeners for the buttons
     if (addRoundBtn) addRoundBtn.addEventListener('click', () => addEntry('rounds'));
     if (addSessionBtn) addSessionBtn.addEventListener('click', () => addEntry('sessions'));
     
-    // Add event listener for the new Clear All button
     if (clearAllBtn) {
         clearAllBtn.addEventListener('click', () => {
             localStorage.removeItem('golfData');
             document.querySelector('#golf-rounds .golf-entry-list').innerHTML = '';
             document.querySelector('#practice-sessions .golf-entry-list').innerHTML = '';
+            window.renderGolfChart([]); // Clear the chart
         });
     }
 
-    // Load saved data when the page loads
     loadEntries();
 
-    // Function to add a new golf entry
     function addEntry(type, data = {}) {
         const listContainer = document.querySelector(`.${type}-list`);
         
@@ -28,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
         entryItem.classList.add('golf-entry-item');
 
         let innerHTML = '';
-
         if (type === 'rounds') {
             innerHTML = `
                 <div class="golf-entry-item-row">
@@ -66,13 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
         entryItem.innerHTML = innerHTML;
         listContainer.appendChild(entryItem);
 
-        // Add event listeners to save data on input change
         const inputs = entryItem.querySelectorAll('input, textarea');
         inputs.forEach(input => {
             input.addEventListener('input', saveEntries);
         });
 
-        // Add event listener to the new delete button
         const deleteButton = entryItem.querySelector('.delete-entry-btn');
         deleteButton.addEventListener('click', () => {
             entryItem.remove();
@@ -80,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Function to save all entries to localStorage
     function saveEntries() {
         const rounds = [];
         document.querySelectorAll('#golf-rounds .golf-entry-item').forEach(item => {
@@ -101,14 +93,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         localStorage.setItem('golfData', JSON.stringify({ rounds, sessions }));
+        
+        // Update the chart whenever data changes
+        const savedData = JSON.parse(localStorage.getItem('golfData'));
+        window.renderGolfChart(savedData.rounds);
     }
 
-    // Function to load entries from localStorage
     function loadEntries() {
         const savedData = JSON.parse(localStorage.getItem('golfData'));
         if (savedData) {
             savedData.rounds.forEach(round => addEntry('rounds', round));
             savedData.sessions.forEach(session => addEntry('sessions', session));
+            window.renderGolfChart(savedData.rounds); // Render chart on load
         }
     }
 });
