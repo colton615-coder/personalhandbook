@@ -25,9 +25,6 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background: linear-gradient(135deg, #6a89cc, #487eb0);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
 }
 
@@ -36,6 +33,7 @@ body {
     max-width: 600px;
     width: 100%;
     text-align: center;
+    margin: 0 auto; /* This centers the container horizontally */
 }
 
 .title {
