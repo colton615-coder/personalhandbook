@@ -1,59 +1,112 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const workoutNameInput = document.getElementById('workout-name');
-    const workoutSetsInput = document.getElementById('workout-sets');
-    const workoutRepsInput = document.getElementById('workout-reps');
-    const addWorkoutBtn = document.getElementById('add-workout-btn');
-    const workoutTableBody = document.querySelector('#workout-table tbody');
 
-    function renderWorkouts() {
-        workoutTableBody.innerHTML = '';
-        const workouts = JSON.parse(localStorage.getItem('workouts')) || [];
-        workouts.forEach((workout, index) => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${workout.name}</td>
-                <td>${workout.sets}</td>
-                <td>${workout.reps}</td>
-                <td>
-                    <button class="delete-btn" data-index="${index}">Delete</button>
-                </td>
-            `;
-            workoutTableBody.appendChild(row);
+    // Select all the "Add Exercise" buttons
+    const addExerciseButtons = document.querySelectorAll('.add-exercise-btn');
+
+    // Add a click event listener to each button
+    addExerciseButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const dayCard = event.target.closest('.card');
+            const dayId = dayCard.id;
+            addExercise(dayId);
+        });
+    });
+
+    // Select the "Clear All Workouts" button
+    const clearAllButton = document.querySelector('#clear-all-btn');
+
+    // Add a click event listener to the clear button
+    clearAllButton.addEventListener('click', () => {
+        // Clear the data from localStorage
+        localStorage.removeItem('myWorkouts');
+        
+        // Remove all exercise items from the page
+        const allExerciseLists = document.querySelectorAll('.exercise-list');
+        allExerciseLists.forEach(list => {
+            list.innerHTML = '';
+        });
+    });
+
+    // Load saved workouts when the page loads
+    loadWorkouts();
+
+    // Function to create and add a new exercise input block
+    function addExercise(dayId, exerciseName = '', setsReps = '', isCompleted = false) {
+        const exerciseList = document.querySelector(`#${dayId} .exercise-list`);
+        
+        const exerciseItem = document.createElement('div');
+        exerciseItem.classList.add('exercise-item');
+        if (isCompleted) {
+            exerciseItem.classList.add('completed');
+        }
+
+        exerciseItem.innerHTML = `
+            <div class="checkbox-container">
+                <input type="checkbox" ${isCompleted ? 'checked' : ''}>
+            </div>
+            <div class="exercise-item-content">
+                <div class="exercise-item-row">
+                    <input type="text" placeholder="Exercise Name" class="input-field exercise-name-input" value="${exerciseName}">
+                </div>
+                <div class="exercise-item-row sets-reps-container">
+                    <input type="text" placeholder="Sets x Reps" class="input-field sets-reps-input" value="${setsReps}">
+                </div>
+            </div>
+        `;
+
+        // Add a listener to the checkbox
+        const checkbox = exerciseItem.querySelector('input[type="checkbox"]');
+        checkbox.addEventListener('change', () => {
+            exerciseItem.classList.toggle('completed', checkbox.checked);
+            saveWorkouts();
         });
 
-        document.querySelectorAll('.delete-btn').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const index = e.target.dataset.index;
-                deleteWorkout(index);
+        // Add listeners to the input fields to save changes
+        const inputs = exerciseItem.querySelectorAll('input[type="text"]');
+        inputs.forEach(input => {
+            input.addEventListener('input', saveWorkouts);
+        });
+
+        exerciseList.appendChild(exerciseItem);
+        saveWorkouts();
+    }
+
+    // Function to save all workouts to localStorage
+    function saveWorkouts() {
+        const allWorkouts = {};
+        const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+
+        days.forEach(day => {
+            const exerciseItems = document.querySelectorAll(`#${day} .exercise-item`);
+            const dailyExercises = [];
+
+            exerciseItems.forEach(item => {
+                const name = item.querySelector('.exercise-name-input').value;
+                const setsReps = item.querySelector('.sets-reps-input').value;
+                const isCompleted = item.querySelector('input[type="checkbox"]').checked;
+
+                dailyExercises.push({
+                    name: name,
+                    setsReps: setsReps,
+                    isCompleted: isCompleted
+                });
             });
+
+            allWorkouts[day] = dailyExercises;
         });
+
+        localStorage.setItem('myWorkouts', JSON.stringify(allWorkouts));
     }
 
-    function addWorkout() {
-        const name = workoutNameInput.value.trim();
-        const sets = workoutSetsInput.value.trim();
-        const reps = workoutRepsInput.value.trim();
-
-        if (!name || !sets || !reps) return;
-
-        const workouts = JSON.parse(localStorage.getItem('workouts')) || [];
-        workouts.push({ name, sets, reps });
-        localStorage.setItem('workouts', JSON.stringify(workouts));
-
-        workoutNameInput.value = '';
-        workoutSetsInput.value = '';
-        workoutRepsInput.value = '';
-
-        renderWorkouts();
+    // Function to load workouts from localStorage
+    function loadWorkouts() {
+        const savedWorkouts = JSON.parse(localStorage.getItem('myWorkouts'));
+        if (savedWorkouts) {
+            for (const day in savedWorkouts) {
+                savedWorkouts[day].forEach(exercise => {
+                    addExercise(day, exercise.name, exercise.setsReps, exercise.isCompleted);
+                });
+            }
+        }
     }
-
-    function deleteWorkout(index) {
-        const workouts = JSON.parse(localStorage.getItem('workouts'));
-        workouts.splice(index, 1);
-        localStorage.setItem('workouts', JSON.stringify(workouts));
-        renderWorkouts();
-    }
-
-    addWorkoutBtn.addEventListener('click', addWorkout);
-    renderWorkouts();
 });
