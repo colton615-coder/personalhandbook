@@ -15,7 +15,6 @@
         <div class="nav-links">
             <a href="index.html" class="nav-item">Home</a>
             <a href="workouts.html" class="nav-item">Workouts</a>
-            <a href="nutrition.html" class="nav-item">Nutrition</a>
             <a href="golf.html" class="nav-item active">Golf</a>
             <a href="shopping.html" class="nav-item">Shopping</a>
             <a href="calendar.html" class="nav-item">Calendar</a>
@@ -25,6 +24,9 @@
     <main class="content-container">
         <h1 class="title">My Golf Tracker</h1>
         <p class="subtitle">Track your rounds, practice sessions, and notes.</p>
+        <div class="card">
+            <canvas id="golf-chart"></canvas>
+        </div>
         <button class="button clear-all-golf-btn">Clear All Golf Data</button>
 
         <div class="card" id="golf-rounds">
@@ -43,6 +45,9 @@
 
     </main>
     
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script src="scripts/golf-charts.js"></script>
     <script src="scripts/golf.js"></script>
 
 </body>
