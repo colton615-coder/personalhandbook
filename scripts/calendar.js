@@ -4,9 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Get the current date
     let currentDate = new Date();
 
+    // Load events from localStorage
+    let events = JSON.parse(localStorage.getItem('calendarEvents')) || {};
+
     // Function to render the calendar
     function renderCalendar() {
-        // Clear existing calendar content
         calendarContainer.innerHTML = '';
 
         const month = currentDate.getMonth();
@@ -15,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const daysInMonth = new Date(year, month + 1, 0).getDate();
         const startDayOfWeek = firstDayOfMonth.getDay();
 
-        // Create the calendar header (Month and Year)
+        // Create the calendar header
         const header = document.createElement('div');
         header.classList.add('calendar-header');
         header.innerHTML = `
@@ -25,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         calendarContainer.appendChild(header);
 
-        // Add event listeners for navigation buttons
         document.getElementById('prev-btn').addEventListener('click', () => {
             currentDate.setMonth(currentDate.getMonth() - 1);
             renderCalendar();
@@ -52,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const calendarGrid = document.createElement('div');
         calendarGrid.classList.add('calendar-grid');
         
-        // Add inactive cells for days from the previous month
         for (let i = 0; i < startDayOfWeek; i++) {
             const emptyCell = document.createElement('div');
             emptyCell.classList.add('calendar-cell', 'inactive');
@@ -64,17 +64,45 @@ document.addEventListener('DOMContentLoaded', () => {
             const cell = document.createElement('div');
             cell.classList.add('calendar-cell');
             cell.innerHTML = `<span class="calendar-cell-date">${day}</span>`;
+            cell.dataset.date = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
             
-            // Highlight the current day
             const today = new Date();
             if (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
                 cell.classList.add('current-day');
             }
 
+            // Display events for this date
+            const dateKey = cell.dataset.date;
+            if (events[dateKey]) {
+                const eventText = document.createElement('div');
+                eventText.classList.add('calendar-event');
+                eventText.textContent = events[dateKey];
+                cell.appendChild(eventText);
+            }
+            
+            // Add a click listener to the cell
+            cell.addEventListener('click', () => {
+                const event = prompt('Enter a new event for this date:', events[dateKey] || '');
+                if (event !== null) {
+                    if (event.trim() === '') {
+                        delete events[dateKey];
+                    } else {
+                        events[dateKey] = event.trim();
+                    }
+                    saveEvents();
+                    renderCalendar();
+                }
+            });
+
             calendarGrid.appendChild(cell);
         }
 
         calendarContainer.appendChild(calendarGrid);
+    }
+
+    // Function to save events to localStorage
+    function saveEvents() {
+        localStorage.setItem('calendarEvents', JSON.stringify(events));
     }
     
     // Initial render of the calendar
