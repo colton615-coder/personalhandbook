@@ -3,61 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Workout Tracker</title>
+    <title>Workouts</title>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <a href="index.html" class="back-btn">← Back to Dashboard</a>
-
     <main class="content-container">
         <h1 class="title">My Weekly Workout Plan</h1>
         <p class="subtitle">Track your progress and stay on top of your goals.</p>
 
-        <div class="card">
-            <canvas id="workout-chart"></canvas>
-        </div>
-        
-        <button class="button clear-all-btn">Clear All Workouts</button>
-
-        <div class="card" id="monday">
+        <div class="workout-day-card glass-card">
             <h2>Monday</h2>
             <div class="exercise-list">
+                <div class="exercise-item glass-item">
+                    <input type="checkbox" id="exercise1">
+                    <label for="exercise1" class="exercise-item-content">
+                        <input type="text" class="exercise-name-input" placeholder="Exercise Name">
+                        <input type="text" class="sets-reps-input" placeholder="Sets x Reps (e.g., 3 x 10)">
+                    </label>
+                    <button class="delete-btn">X</button>
                 </div>
-            <button class="button add-exercise-btn">Add Exercise</button>
+                <div class="exercise-item glass-item">
+                    <input type="checkbox" id="exercise2">
+                    <label for="exercise2" class="exercise-item-content">
+                        <input type="text" class="exercise-name-input" placeholder="Exercise Name">
+                        <input type="text" class="sets-reps-input" placeholder="Sets x Reps (e.g., 3 x 10)">
+                    </label>
+                    <button class="delete-btn">X</button>
+                </div>
+            </div>
+            <button class="add-exercise-btn">Add Exercise</button>
         </div>
 
-        <div class="card" id="tuesday">
+        <div class="workout-day-card glass-card">
             <h2>Tuesday</h2>
-            <div class="exercise-list"></div>
-            <button class="button add-exercise-btn">Add Exercise</button>
+            <div class="exercise-list">
+                <div class="exercise-item glass-item">
+                    <input type="checkbox" id="exercise3">
+                    <label for="exercise3" class="exercise-item-content">
+                        <input type="text" class="exercise-name-input" placeholder="Exercise Name">
+                        <input type="text" class="sets-reps-input" placeholder="Sets x Reps (e.g., 3 x 10)">
+                    </label>
+                    <button class="delete-btn">X</button>
+                </div>
+            </div>
+            <button class="add-exercise-btn">Add Exercise</button>
         </div>
-        
-        <div class="card" id="wednesday">
-            <h2>Wednesday</h2>
-            <div class="exercise-list"></div>
-            <button class="button add-exercise-btn">Add Exercise</button>
-        </div>
-        
-        <div class="card" id="thursday">
-            <h2>Thursday</h2>
-            <div class="exercise-list"></div>
-            <button class="button add-exercise-btn">Add Exercise</button>
-        </div>
-        
-        <div class="card" id="friday">
-            <h2>Friday</h2>
-            <div class="exercise-list"></div>
-            <button class="button add-exercise-btn">Add Exercise</button>
-        </div>
+
+        <button class="clear-all-btn">Clear All Workouts</button>
 
     </main>
-    
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    <script src="scripts/workouts.js"></script>
-
 </body>
 </html>
