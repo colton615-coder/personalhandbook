@@ -3,50 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects & Goals</title>
+    <title>My Projects</title>
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/projects.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header class="navbar">
-        <nav class="nav-links">
-    <a href="index.html" class="nav-item">Dashboard</a>
-    <a href="time-blocks.html" class="nav-item">Time Blocks</a>
-    <a href="tasks.html" class="nav-item">Tasks</a>
-    <a href="projects.html" class="nav-item">Projects</a>
-    <a href="workouts.html" class="nav-item">Workouts</a>
-    <a href="golf.html" class="nav-item">Golf</a>
-    <a href="shopping.html" class="nav-item">Shopping List</a>
-    <a href="calendar.html" class="nav-item">Calendar</a>
-</nav>
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="workouts.html" class="nav-item">Workouts</a>
+            <a href="golf.html" class="nav-item">Golf</a>
+            <a href="shopping.html" class="nav-item">Shopping</a>
+            <a href="calendar.html" class="nav-item">Calendar</a>
+        </div>
+    </nav>
 
-    </header>
+    <main class="content-container">
+        <h1 class="title">Projects</h1>
+        <p class="subtitle">Stay on top of your long-term goals.</p>
 
-    <main class="content-container projects-grid">
-        <section class="card project-tracker-section">
-            <h2>🚀 Projects</h2>
-            <div class="input-group">
-                <input type="text" id="project-title-input" placeholder="Project Title" class="input-field">
-                <textarea id="project-desc-input" placeholder="Description" class="textarea-field"></textarea>
-                <button id="add-project-btn" class="button">Add Project</button>
-            </div>
-            <div id="project-list" class="project-list-container"></div>
-        </section>
+        <div class="card" id="projects-list">
+            <h2>My Projects</h2>
+            <div class="project-list">
+                </div>
+            <button class="button add-project-btn">Add Project</button>
+            <button class="button clear-list-btn">Clear All</button>
+        </div>
 
-        <section class="card goals-section">
-            <h2>🎯 Long-Term Goals</h2>
-            <textarea id="goals-area" placeholder="Write down your long-term goals here..." class="textarea-field"></textarea>
-        </section>
-
-        <section class="card habit-tracker-section">
-            <h2>🧘 Habit Tracker</h2>
-            <div class="input-group">
-                <input type="text" id="habit-input" placeholder="New habit to track" class="input-field">
-                <button id="add-habit-btn" class="button">Add</button>
-            </div>
-            <ul id="habit-list" class="habit-list"></ul>
-        </section>
     </main>
 
     <script src="scripts/projects.js"></script>
