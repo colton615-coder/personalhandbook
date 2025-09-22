@@ -3,37 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping List</title>
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/additional-pages.css">
+    <title>My Shopping Lists</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header class="navbar">
-        <nav class="nav-links">
-            <a href="index.html" class="nav-item">Dashboard</a>
-            <a href="time-blocks.html" class="nav-item">Time Blocks</a>
-            <a href="tasks.html" class="nav-item">Tasks</a>
-            <a href="projects.html" class="nav-item">Projects</a>
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="index.html" class="nav-item">Home</a>
             <a href="workouts.html" class="nav-item">Workouts</a>
+            <a href="nutrition.html" class="nav-item">Nutrition</a>
             <a href="golf.html" class="nav-item">Golf</a>
-            <a href="shopping.html" class="nav-item active">Shopping List</a>
-            <a href="calendar.html" class="nav-item">Calendar</a>
-        </nav>
-    </header>
+            <a href="shopping.html" class="nav-item active">Shopping</a>
+        </div>
+    </nav>
 
     <main class="content-container">
-        <section class="card">
-            <h2>🛒 Shopping List</h2>
-            <div class="input-group">
-                <input type="text" id="shopping-input" placeholder="Add an item..." class="input-field">
-                <button id="add-shopping-btn" class="button">Add</button>
-            </div>
-            <ul id="shopping-list" class="shopping-list"></ul>
-        </section>
-    </main>
+        <h1 class="title">My Shopping Lists</h1>
+        <p class="subtitle">Organize your shopping by category.</p>
 
-    <script src="scripts/shopping.js"></script>
+        <div class="card" id="groceries-list">
+            <h2>Groceries</h2>
+            <div class="list-items-container">
+                </div>
+            <div class="add-item-row">
+                <input type="text" class="input-field new-item-input" placeholder="Add a new item...">
+                <button class="button add-item-btn">Add</button>
+            </div>
+        </div>
+
+        <div class="card" id="supplies-list">
+            <h2>Supplies</h2>
+            <div class="list-items-container"></div>
+            <div class="add-item-row">
+                <input type="text" class="input-field new-item-input" placeholder="Add a new item...">
+                <button class="button add-item-btn">Add</button>
+            </div>
+        </div>
+
+        <div class="card" id="treat-yoself-list">
+            <h2>TreatYoSelf</h2>
+            <div class="list-items-container"></div>
+            <div class="add-item-row">
+                <input type="text" class="input-field new-item-input" placeholder="Add a new item...">
+                <button class="button add-item-btn">Add</button>
+            </div>
+        </div>
+
+        <div class="card" id="gifts-list">
+            <h2>Gifts</h2>
+            <div class="list-items-container"></div>
+            <div class="add-item-row">
+                <input type="text" class="input-field new-item-input" placeholder="Add a new item...">
+                <button class="button add-item-btn">Add</button>
+            </div>
+        </div>
+
+    </main>
+    
+    <script src="shopping.js"></script>
 
 </body>
 </html>
