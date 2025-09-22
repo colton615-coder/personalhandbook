@@ -1,7 +1,97 @@
-/*
- * Please copy and paste these new and updated CSS rules
- * into your 'styles/main.css' file.
- */
+/* ========================================= */
+/* --- GLOBAL STYLING & GLASSMORPHISM ---    */
+/* ========================================= */
+:root {
+    --primary-color: #3498db;
+    --accent-color: #3498db;
+    --secondary-color: #7f8c8d;
+    --text-color: #2c3e50;
+    --secondary-text-color: #34495e;
+    --bg-color: #ecf0f1;
+    --card-bg: #ffffff;
+    --border-color: #dfe6e9;
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+    --shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    --padding-sm: 0.8rem;
+    --padding-md: 1.5rem;
+    --padding-lg: 2rem;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    color: var(--text-color);
+    background: linear-gradient(135deg, #6a89cc, #487eb0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.content-container {
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+}
+
+.title {
+    font-size: 2.5rem;
+    color: white; /* Changed to white for better contrast on the new background */
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+.card-link {
+    text-decoration: none;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.card {
+    padding: var(--padding-md);
+    border-radius: var(--border-radius-lg);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Glassmorphism Effect */
+.glass-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    color: white;
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: inherit;
+}
+
+.card p {
+    margin: 0;
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
 
 /* --- CSS for the Shopping Page --- */
 
@@ -219,4 +309,3 @@ input[type="checkbox"] {
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
-
