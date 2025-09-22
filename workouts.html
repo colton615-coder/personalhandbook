@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workouts</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/additional-pages.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <nav class="nav-links">
+            <a href="index.html" class="nav-item">Dashboard</a>
+            <a href="time-blocks.html" class="nav-item">Time Blocks</a>
+            <a href="tasks.html" class="nav-item">Tasks</a>
+            <a href="projects.html" class="nav-item">Projects</a>
+            <a href="workouts.html" class="nav-item active">Workouts</a>
+            <a href="golf.html" class="nav-item">Golf</a>
+            <a href="shopping.html" class="nav-item">Shopping List</a>
+            <a href="calendar.html" class="nav-item">Calendar</a>
+        </nav>
+    </header>
+
+    <main class="content-container">
+        <section class="card">
+            <h2>🏋️‍♂️ Workouts</h2>
+            <div class="input-group workout-form">
+                <input type="text" id="workout-name" placeholder="Exercise name" class="input-field">
+                <input type="number" id="workout-sets" placeholder="Sets" class="input-field small-input">
+                <input type="number" id="workout-reps" placeholder="Reps" class="input-field small-input">
+                <button id="add-workout-btn" class="button">Add Exercise</button>
+            </div>
+            <table class="data-table" id="workout-table">
+                <thead>
+                    <tr>
+                        <th>Exercise</th>
+                        <th>Sets</th>
+                        <th>Reps</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="scripts/workouts.js"></script>
+
+</body>
+</html>
