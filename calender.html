@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/additional-pages.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <nav class="nav-links">
+            <a href="index.html" class="nav-item">Dashboard</a>
+            <a href="time-blocks.html" class="nav-item">Time Blocks</a>
+            <a href="tasks.html" class="nav-item">Tasks</a>
+            <a href="projects.html" class="nav-item">Projects</a>
+            <a href="workouts.html" class="nav-item">Workouts</a>
+            <a href="golf.html" class="nav-item">Golf</a>
+            <a href="shopping.html" class="nav-item">Shopping List</a>
+            <a href="calendar.html" class="nav-item active">Calendar</a>
+        </nav>
+    </header>
+
+    <main class="content-container">
+        <section class="card">
+            <div class="calendar-header">
+                <button id="prev-month-btn" class="button nav-btn">‹</button>
+                <h2 id="current-month-year"></h2>
+                <button id="next-month-btn" class="button nav-btn">›</button>
+            </div>
+            <div class="calendar-grid-container">
+                <div class="calendar-grid" id="calendar-grid"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="scripts/calendar.js"></script>
+
+</body>
+</html>
