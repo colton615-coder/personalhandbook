@@ -1,0 +1,69 @@
+.projects-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "projects goals"
+        "habits habits";
+}
+
+.project-tracker-section {
+    grid-area: projects;
+}
+
+.goals-section {
+    grid-area: goals;
+}
+
+.habit-tracker-section {
+    grid-area: habits;
+}
+
+.project-item {
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    background-color: #fcfcfc;
+}
+
+.project-title {
+    font-weight: 600;
+    font-size: 1.1em;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.project-description {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+
+.habit-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+}
+
+.habit-item {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.habit-checkbox {
+    margin-right: 0.75rem;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "projects"
+            "goals"
+            "habits";
+    }
+}
