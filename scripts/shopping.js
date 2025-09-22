@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Clear the list from the DOM
             const listContainer = card.querySelector('.list-items-container');
             listContainer.innerHTML = '';
+            updateChart();
         });
     });
 
@@ -80,16 +81,19 @@ document.addEventListener('DOMContentLoaded', () => {
         checkbox.addEventListener('change', () => {
             listItem.classList.toggle('completed', checkbox.checked);
             saveLists();
+            updateChart();
         });
 
         const deleteButton = listItem.querySelector('.delete-btn');
         deleteButton.addEventListener('click', () => {
             listItem.remove();
             saveLists();
+            updateChart();
         });
 
         listContainer.appendChild(listItem);
         saveLists();
+        updateChart();
     }
 
     // Function to save all lists to localStorage
@@ -120,6 +124,60 @@ document.addEventListener('DOMContentLoaded', () => {
                     addItem(categoryId, item.text, item.isCompleted);
                 });
             }
+        }
+        updateChart();
+    }
+
+    // --- Charting Functions ---
+    const chartCanvas = document.getElementById('shopping-chart');
+    let shoppingChart;
+
+    function updateChart() {
+        const savedData = JSON.parse(localStorage.getItem('shoppingLists'));
+        const categories = ['groceries-list', 'supplies-list', 'treat-yoself-list', 'gifts-list'];
+        const data = categories.map(category => (savedData && savedData[category]) ? savedData[category].length : 0);
+        
+        renderChart({ labels: ['Groceries', 'Supplies', 'TreatYoSelf', 'Gifts'], data: data });
+    }
+
+    function renderChart(chartData) {
+        if (shoppingChart) {
+            shoppingChart.destroy();
+        }
+        
+        const config = {
+            type: 'pie',
+            data: {
+                labels: chartData.labels,
+                datasets: [{
+                    label: 'Items',
+                    data: chartData.data,
+                    backgroundColor: [
+                        '#3498db', // Primary
+                        '#2ecc71', // Green
+                        '#f39c12', // Orange
+                        '#9b59b6'  // Purple
+                    ],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Items per Category'
+                    }
+                }
+            }
+        };
+
+        if (chartCanvas) {
+            shoppingChart = new Chart(chartCanvas, config);
         }
     }
 });
