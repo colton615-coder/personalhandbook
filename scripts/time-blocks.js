@@ -1,39 +1,65 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const timeSlotsEl = document.getElementById('time-slots');
 
-    // --- Time-Blocking Logic ---
-    function generateTimeSlots() {
-        const startHour = 8;
-        const endHour = 20;
+    const addTimeBlockBtn = document.querySelector('.add-time-block-btn');
+    const clearListBtn = document.querySelector('.clear-list-btn');
 
-        for (let i = startHour; i < endHour; i++) {
-            const timeSlotItem = document.createElement('li');
-            timeSlotItem.className = 'time-slot';
-            const timeLabel = document.createElement('span');
-            timeLabel.className = 'time-label';
-            const hour = i % 12 === 0 ? 12 : i % 12;
-            const ampm = i < 12 ? 'AM' : 'PM';
-            timeLabel.textContent = `${hour}:00 ${ampm}`;
-            const inputField = document.createElement('input');
-            inputField.type = 'text';
-            inputField.className = 'time-slot-input input-field';
-            inputField.placeholder = 'Plan your activity...';
+    addTimeBlockBtn.addEventListener('click', () => {
+        addTimeBlock();
+    });
 
-            // Load saved data for this specific time slot
-            const savedActivity = localStorage.getItem(`time-slot-${i}`);
-            if (savedActivity) {
-                inputField.value = savedActivity;
-            }
+    clearListBtn.addEventListener('click', () => {
+        localStorage.removeItem('timeBlocks');
+        document.querySelector('.time-block-list').innerHTML = '';
+    });
 
-            // Save data on input
-            inputField.addEventListener('input', () => {
-                localStorage.setItem(`time-slot-${i}`, inputField.value);
+    loadTimeBlocks();
+
+    function addTimeBlock(data = {}) {
+        const timeBlockList = document.querySelector('.time-block-list');
+
+        const timeBlockItem = document.createElement('div');
+        timeBlockItem.classList.add('time-block-item');
+
+        timeBlockItem.innerHTML = `
+            <div class="time-block-content">
+                <input type="time" class="input-field time-input" value="${data.time || ''}">
+                <input type="text" class="input-field activity-input" placeholder="Plan your activity..." value="${data.activity || ''}">
+            </div>
+            <button class="button delete-btn">X</button>
+        `;
+
+        const deleteButton = timeBlockItem.querySelector('.delete-btn');
+        deleteButton.addEventListener('click', () => {
+            timeBlockItem.remove();
+            saveTimeBlocks();
+        });
+
+        const inputs = timeBlockItem.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('input', saveTimeBlocks);
+        });
+
+        timeBlockList.appendChild(timeBlockItem);
+        saveTimeBlocks();
+    }
+
+    function saveTimeBlocks() {
+        const timeBlockItems = document.querySelectorAll('.time-block-item');
+        const allBlocks = [];
+        timeBlockItems.forEach(item => {
+            const time = item.querySelector('.time-input').value;
+            const activity = item.querySelector('.activity-input').value;
+            allBlocks.push({ time, activity });
+        });
+        localStorage.setItem('timeBlocks', JSON.stringify(allBlocks));
+    }
+
+    function loadTimeBlocks() {
+        const savedBlocks = JSON.parse(localStorage.getItem('timeBlocks'));
+        if (savedBlocks) {
+            savedBlocks.forEach(block => {
+                addTimeBlock(block);
             });
-
-            timeSlotItem.appendChild(timeLabel);
-            timeSlotItem.appendChild(inputField);
-            timeSlotsEl.appendChild(timeSlotItem);
         }
     }
-    generateTimeSlots();
 });
