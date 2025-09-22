@@ -16,6 +16,7 @@ body {
     padding: 0;
     -webkit-font-smoothing: antialiased;
     font-size: 14px; /* Base font size reduced for a more compact feel */
+    overflow-x: hidden; /* This is the new line */
 }
 
 .navbar {
