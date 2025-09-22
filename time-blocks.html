@@ -3,30 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time Blocks</title>
+    <title>My Time Blocks</title>
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header class="navbar">
-        <nav class="nav-links">
-    <a href="index.html" class="nav-item">Dashboard</a>
-    <a href="time-blocks.html" class="nav-item">Time Blocks</a>
-    <a href="tasks.html" class="nav-item">Tasks</a>
-    <a href="projects.html" class="nav-item">Projects</a>
-    <a href="workouts.html" class="nav-item">Workouts</a>
-    <a href="golf.html" class="nav-item">Golf</a>
-    <a href="shopping.html" class="nav-item">Shopping List</a>
-    <a href="calendar.html" class="nav-item">Calendar</a>
-</nav>
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="workouts.html" class="nav-item">Workouts</a>
+            <a href="golf.html" class="nav-item">Golf</a>
+            <a href="shopping.html" class="nav-item">Shopping</a>
+            <a href="calendar.html" class="nav-item">Calendar</a>
+        </div>
+    </nav>
 
-    </header>
+    <main class="content-container">
+        <h1 class="title">Time Blocks</h1>
+        <p class="subtitle">Plan your day in focused, productive blocks.</p>
 
-    <main class="content-container time-blocks-page">
-        <section class="time-blocking-section card">
-            <h2>Time Blocks</h2>
-            <ul id="time-slots" class="time-slot-list"></ul>
-        </section>
+        <div class="card" id="time-blocks-list">
+            <h2>Today's Schedule</h2>
+            <div class="time-block-list">
+                </div>
+            <button class="button add-time-block-btn">Add Time Block</button>
+            <button class="button clear-list-btn">Clear All</button>
+        </div>
+
     </main>
 
     <script src="scripts/time-blocks.js"></script>
