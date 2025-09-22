@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <nav class="nav-links">
+            <a href="index.html" class="nav-item">Dashboard</a>
+            <a href="time-blocks.html" class="nav-item">Time Blocks</a>
+            <a href="tasks.html" class="nav-item active">Tasks</a>
+            <a href="projects.html" class="nav-item">Projects</a>
+        </nav>
+    </header>
+
+    <main class="content-container tasks-page">
+        <section class="task-list-section card">
+            <h2>Tasks</h2>
+            <div class="input-group">
+                <input type="text" id="task-input" placeholder="Add a new task..." class="input-field">
+                <button id="add-task-btn" class="button">Add</button>
+            </div>
+            <ul id="task-list" class="task-list"></ul>
+        </section>
+
+        <section class="notes-section card">
+            <h2>Notes</h2>
+            <textarea id="notes-area" placeholder="Jot down your thoughts..." class="textarea-field"></textarea>
+        </section>
+    </main>
+
+    <script src="scripts/tasks.js"></script>
+
+</body>
+</html>
