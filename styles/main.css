@@ -577,3 +577,17 @@ canvas {
         padding: 0.15rem 0.2rem;
     }
 }
+/* Styling for card links on the dashboard */
+.card-link {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.card-link .card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease;
+}
+
+.card-link:hover .card {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px var(--hover-shadow-color);
+}
