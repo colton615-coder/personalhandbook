@@ -1,57 +1,95 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const golfScoreInput = document.getElementById('golf-score');
-    const golfNotesInput = document.getElementById('golf-notes');
-    const addScoreBtn = document.getElementById('add-score-btn');
-    const golfTableBody = document.querySelector('#golf-table tbody');
+    // Select the add round and add session buttons
+    const addRoundBtn = document.querySelector('.add-round-btn');
+    const addSessionBtn = document.querySelector('.add-session-btn');
 
-    function renderGolfRounds() {
-        golfTableBody.innerHTML = '';
-        const golfRounds = JSON.parse(localStorage.getItem('golfRounds')) || [];
-        golfRounds.forEach((round, index) => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${round.date}</td>
-                <td>${round.score}</td>
-                <td>${round.notes}</td>
-                <td>
-                    <button class="delete-btn" data-index="${index}">Delete</button>
-                </td>
+    // Add event listeners for the buttons
+    addRoundBtn.addEventListener('click', () => addEntry('rounds'));
+    addSessionBtn.addEventListener('click', () => addEntry('sessions'));
+
+    // Load saved data when the page loads
+    loadEntries();
+
+    // Function to add a new golf entry
+    function addEntry(type, data = {}) {
+        const listContainer = document.querySelector(`.${type}-list`);
+        
+        const entryItem = document.createElement('div');
+        entryItem.classList.add('golf-entry-item');
+
+        let innerHTML = '';
+
+        if (type === 'rounds') {
+            innerHTML = `
+                <div class="golf-entry-item-row">
+                    <label class="golf-entry-label">Course:</label>
+                    <input type="text" class="input-field golf-course-input" placeholder="Course Name" value="${data.course || ''}">
+                </div>
+                <div class="golf-entry-item-row">
+                    <label class="golf-entry-label">Date:</label>
+                    <input type="date" class="input-field golf-date-input" value="${data.date || ''}">
+                </div>
+                <div class="golf-entry-item-row">
+                    <label class="golf-entry-label">Score:</label>
+                    <input type="number" class="input-field golf-score-input" placeholder="Total Score" value="${data.score || ''}">
+                </div>
+                <div>
+                    <label class="golf-notes-label">Notes:</label>
+                    <textarea class="textarea-field golf-notes-input" placeholder="Add notes about your round">${data.notes || ''}</textarea>
+                </div>
             `;
-            golfTableBody.appendChild(row);
-        });
+        } else if (type === 'sessions') {
+            innerHTML = `
+                <div class="golf-entry-item-row">
+                    <label class="golf-entry-label">Date:</label>
+                    <input type="date" class="input-field golf-date-input" value="${data.date || ''}">
+                </div>
+                <div>
+                    <label class="golf-notes-label">Session Details:</label>
+                    <textarea class="textarea-field golf-notes-input" placeholder="Range session, drills, etc.">${data.notes || ''}</textarea>
+                </div>
+            `;
+        }
+        
+        entryItem.innerHTML = innerHTML;
+        listContainer.appendChild(entryItem);
 
-        document.querySelectorAll('.delete-btn').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const index = e.target.dataset.index;
-                deleteGolfRound(index);
+        // Add event listeners to save data on input change
+        const inputs = entryItem.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('input', saveEntries);
+        });
+    }
+
+    // Function to save all entries to localStorage
+    function saveEntries() {
+        const rounds = [];
+        document.querySelectorAll('#golf-rounds .golf-entry-item').forEach(item => {
+            rounds.push({
+                course: item.querySelector('.golf-course-input').value,
+                date: item.querySelector('.golf-date-input').value,
+                score: item.querySelector('.golf-score-input').value,
+                notes: item.querySelector('.golf-notes-input').value
             });
         });
+
+        const sessions = [];
+        document.querySelectorAll('#practice-sessions .golf-entry-item').forEach(item => {
+            sessions.push({
+                date: item.querySelector('.golf-date-input').value,
+                notes: item.querySelector('.golf-notes-input').value
+            });
+        });
+
+        localStorage.setItem('golfData', JSON.stringify({ rounds, sessions }));
     }
 
-    function addGolfRound() {
-        const score = golfScoreInput.value.trim();
-        const notes = golfNotesInput.value.trim() || 'No notes';
-
-        if (!score) return;
-
-        const golfRounds = JSON.parse(localStorage.getItem('golfRounds')) || [];
-        const date = new Date().toLocaleDateString();
-        golfRounds.push({ date, score, notes });
-        localStorage.setItem('golfRounds', JSON.stringify(golfRounds));
-
-        golfScoreInput.value = '';
-        golfNotesInput.value = '';
-
-        renderGolfRounds();
+    // Function to load entries from localStorage
+    function loadEntries() {
+        const savedData = JSON.parse(localStorage.getItem('golfData'));
+        if (savedData) {
+            savedData.rounds.forEach(round => addEntry('rounds', round));
+            savedData.sessions.forEach(session => addEntry('sessions', session));
+        }
     }
-
-    function deleteGolfRound(index) {
-        const golfRounds = JSON.parse(localStorage.getItem('golfRounds'));
-        golfRounds.splice(index, 1);
-        localStorage.setItem('golfRounds', JSON.stringify(golfRounds));
-        renderGolfRounds();
-    }
-
-    addScoreBtn.addEventListener('click', addGolfRound);
-    renderGolfRounds();
 });
