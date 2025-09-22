@@ -1,23 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
     const calendarContainer = document.querySelector('.calendar-container');
-
-    // Get the current date
     let currentDate = new Date();
-
-    // Load events from localStorage
     let events = JSON.parse(localStorage.getItem('calendarEvents')) || {};
 
-    // Function to render the calendar
     function renderCalendar() {
         calendarContainer.innerHTML = '';
-
         const month = currentDate.getMonth();
         const year = currentDate.getFullYear();
         const firstDayOfMonth = new Date(year, month, 1);
         const daysInMonth = new Date(year, month + 1, 0).getDate();
         const startDayOfWeek = firstDayOfMonth.getDay();
 
-        // Create the calendar header
         const header = document.createElement('div');
         header.classList.add('calendar-header');
         header.innerHTML = `
@@ -37,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
             renderCalendar();
         });
 
-        // Create the weekdays header
         const weekdayHeader = document.createElement('div');
         weekdayHeader.classList.add('calendar-grid');
         const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -49,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         calendarContainer.appendChild(weekdayHeader);
 
-        // Create the calendar grid for the days
         const calendarGrid = document.createElement('div');
         calendarGrid.classList.add('calendar-grid');
         
@@ -59,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
             calendarGrid.appendChild(emptyCell);
         }
 
-        // Add cells for the days of the current month
         for (let day = 1; day <= daysInMonth; day++) {
             const cell = document.createElement('div');
             cell.classList.add('calendar-cell');
@@ -71,7 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 cell.classList.add('current-day');
             }
 
-            // Display events for this date
             const dateKey = cell.dataset.date;
             if (events[dateKey]) {
                 const eventText = document.createElement('div');
@@ -80,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 cell.appendChild(eventText);
             }
             
-            // Add a click listener to the cell
             cell.addEventListener('click', () => {
                 const event = prompt('Enter a new event for this date:', events[dateKey] || '');
                 if (event !== null) {
@@ -93,18 +81,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     renderCalendar();
                 }
             });
-
             calendarGrid.appendChild(cell);
         }
-
         calendarContainer.appendChild(calendarGrid);
     }
 
-    // Function to save events to localStorage
     function saveEvents() {
         localStorage.setItem('calendarEvents', JSON.stringify(events));
     }
     
-    // Initial render of the calendar
     renderCalendar();
 });
