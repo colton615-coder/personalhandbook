@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/additional-pages.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <nav class="nav-links">
+            <a href="index.html" class="nav-item">Dashboard</a>
+            <a href="time-blocks.html" class="nav-item">Time Blocks</a>
+            <a href="tasks.html" class="nav-item">Tasks</a>
+            <a href="projects.html" class="nav-item">Projects</a>
+            <a href="workouts.html" class="nav-item">Workouts</a>
+            <a href="golf.html" class="nav-item">Golf</a>
+            <a href="shopping.html" class="nav-item active">Shopping List</a>
+            <a href="calendar.html" class="nav-item">Calendar</a>
+        </nav>
+    </header>
+
+    <main class="content-container">
+        <section class="card">
+            <h2>🛒 Shopping List</h2>
+            <div class="input-group">
+                <input type="text" id="shopping-input" placeholder="Add an item..." class="input-field">
+                <button id="add-shopping-btn" class="button">Add</button>
+            </div>
+            <ul id="shopping-list" class="shopping-list"></ul>
+        </section>
+    </main>
+
+    <script src="scripts/shopping.js"></script>
+
+</body>
+</html>
