@@ -3,49 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Golf</title>
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/additional-pages.css">
+    <title>My Golf Tracker</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header class="navbar">
-        <nav class="nav-links">
-            <a href="index.html" class="nav-item">Dashboard</a>
-            <a href="time-blocks.html" class="nav-item">Time Blocks</a>
-            <a href="tasks.html" class="nav-item">Tasks</a>
-            <a href="projects.html" class="nav-item">Projects</a>
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="index.html" class="nav-item">Home</a>
             <a href="workouts.html" class="nav-item">Workouts</a>
+            <a href="nutrition.html" class="nav-item">Nutrition</a>
             <a href="golf.html" class="nav-item active">Golf</a>
-            <a href="shopping.html" class="nav-item">Shopping List</a>
-            <a href="calendar.html" class="nav-item">Calendar</a>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
     <main class="content-container">
-        <section class="card">
-            <h2>🏌️‍♂️ Golf Scorecard</h2>
-            <div class="input-group golf-form">
-                <input type="number" id="golf-score" placeholder="Score" class="input-field small-input">
-                <input type="text" id="golf-notes" placeholder="Notes (e.g., Course, Date)" class="input-field">
-                <button id="add-score-btn" class="button">Add Round</button>
-            </div>
-            <table class="data-table" id="golf-table">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Score</th>
-                        <th>Notes</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </section>
-    </main>
+        <h1 class="title">My Golf Tracker</h1>
+        <p class="subtitle">Track your rounds, practice sessions, and notes.</p>
 
-    <script src="scripts/golf.js"></script>
+        <div class="card" id="golf-rounds">
+            <h2>Actual Golf Rounds</h2>
+            <div class="rounds-list">
+                </div>
+            <button class="button add-round-btn">Add Round</button>
+        </div>
+        
+        <div class="card" id="practice-sessions">
+            <h2>Practice Sessions & Notes</h2>
+            <div class="sessions-list">
+                </div>
+            <button class="button add-session-btn">Add Session</button>
+        </div>
+
+    </main>
+    
+    <script src="golf.js"></script>
 
 </body>
 </html>
