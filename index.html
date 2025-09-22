@@ -3,30 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Handbook</title>
-    <link rel="stylesheet" href="style.css">
+    <title>My Assistant</title>
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <header>
-        <h1>My Handbook</h1>
-        <p id="date"></p>
-        <button id="auth-button" style="display: none;">Sign In</button>
-        <button id="signout-button" style="display: none;">Sign Out</button>
+
+    <header class="navbar">
+        <nav class="nav-links">
+            <a href="index.html" class="nav-item">Dashboard</a>
+            <a href="planner.html" class="nav-item">Planner</a>
+            <a href="projects.html" class="nav-item">Projects</a>
+        </nav>
     </header>
 
-    <main id="main-content" style="display: none;">
-        <section class="section">
-            <h2>Today's Agenda</h2>
-            <div id="events-container">Loading...</div>
-        </section>
-        <section class="section">
-            <h2>Today's Tasks</h2>
-            <div id="tasks-container">Loading...</div>
+    <main class="content-container">
+        <section class="hero-section">
+            <h1 class="title">Your All-in-One Assistant.</h1>
+            <p class="subtitle">Streamline your life, one task at a time.</p>
         </section>
     </main>
 
-    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
-    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
-    <script src="script.js"></script>
+    <script src="scripts/main.js"></script>
+
 </body>
 </html>
