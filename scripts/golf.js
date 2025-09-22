@@ -1,24 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Select the add round and add session buttons
     const addRoundBtn = document.querySelector('.add-round-btn');
     const addSessionBtn = document.querySelector('.add-session-btn');
+    if (addRoundBtn) addRoundBtn.addEventListener('click', () => addEntry('rounds'));
+    if (addSessionBtn) addSessionBtn.addEventListener('click', () => addEntry('sessions'));
 
-    // Add event listeners for the buttons
-    addRoundBtn.addEventListener('click', () => addEntry('rounds'));
-    addSessionBtn.addEventListener('click', () => addEntry('sessions'));
-
-    // Load saved data when the page loads
     loadEntries();
 
-    // Function to add a new golf entry
     function addEntry(type, data = {}) {
         const listContainer = document.querySelector(`.${type}-list`);
-        
         const entryItem = document.createElement('div');
         entryItem.classList.add('golf-entry-item');
 
         let innerHTML = '';
-
         if (type === 'rounds') {
             innerHTML = `
                 <div class="golf-entry-item-row">
@@ -54,14 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
         entryItem.innerHTML = innerHTML;
         listContainer.appendChild(entryItem);
 
-        // Add event listeners to save data on input change
         const inputs = entryItem.querySelectorAll('input, textarea');
         inputs.forEach(input => {
             input.addEventListener('input', saveEntries);
         });
     }
 
-    // Function to save all entries to localStorage
     function saveEntries() {
         const rounds = [];
         document.querySelectorAll('#golf-rounds .golf-entry-item').forEach(item => {
@@ -84,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('golfData', JSON.stringify({ rounds, sessions }));
     }
 
-    // Function to load entries from localStorage
     function loadEntries() {
         const savedData = JSON.parse(localStorage.getItem('golfData'));
         if (savedData) {
