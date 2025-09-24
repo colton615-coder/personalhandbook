@@ -2,68 +2,87 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
-    <title>My Golf Trainer</title>
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golf Trainer</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="page-wrapper">
-        <div class="nav-header">
-            <a href="index.html" class="back-button">&lt;</a>
-            <div class="header-text-container">
-                <h1 class="title">My Golf Trainer</h1>
-                <p class="subtitle">Drills, practice plans, and swing analysis.</p>
+<div class="container">
+    <header>
+        <h1>Golf Handbook</h1>
+        <p>Improve your game with drills, practice plans, and performance tracking.</p>
+    </header>
+
+    <main class="main-content">
+        <section id="drills" class="section-card">
+            <h2>Drills & Tips</h2>
+            <div id="drills-container">
+                </div>
+        </section>
+
+        <section id="practice-planner" class="section-card">
+            <h2>Practice Planner</h2>
+            <p>Generate a structured practice plan for your next session.</p>
+            <button id="generate-plan-button" class="btn">Generate Practice Plan</button>
+            <div id="practice-plan-output">
+                </div>
+        </section>
+
+        <section id="golf-journal" class="section-card">
+            <h2>Golf Journal</h2>
+            <p>Log your swings, rounds, and practice sessions.</p>
+
+            <div class="journal-form">
+                <h3>Add a New Entry</h3>
+                <label for="shotType">Shot Type:</label>
+                <input type="text" id="shotType" placeholder="e.g., Driver, Pitch Shot">
+                
+                <label for="clubDetails">Club/Details:</label>
+                <input type="text" id="clubDetails" placeholder="e.g., Driver, 100 yds, sand wedge">
+                
+                <label for="swingFeel">Swing Feel:</label>
+                <input type="text" id="swingFeel" placeholder="e.g., 'Easy tempo', 'Hands ahead'">
+
+                <label for="journalPhoto">Photo:</label>
+                <input type="file" id="journalPhoto" accept="image/*">
+                
+                <button id="add-entry-button" class="btn">Add Journal Entry</button>
             </div>
-        </div>
+            
+            <div id="journal-list" class="journal-entries">
+                </div>
+        </section>
 
-        <main class="content-container">
-
-            <div class="glass-card drill-card">
-                <h3 class="daily-heading">Drills & Tips</h3>
-                <div class="drill-list" id="drill-list">
-                    <div class="drill-item placeholder">
-                        <p>Loading drills...</p>
-                    </div>
+        <section id="golf-tracker" class="section-card">
+            <h2>Performance Tracker</h2>
+            <div class="tracker-buttons">
+                <button class="add-round-btn btn">Add Round</button>
+                <button class="add-session-btn btn">Add Practice Session</button>
+                <button class="clear-all-golf-btn btn btn-danger">Clear All Data</button>
+            </div>
+            
+            <div class="tracker-list-container">
+                <div id="golf-rounds" class="golf-entry-list-container">
+                    <h3>Rounds Played</h3>
+                    <div class="golf-entry-list rounds-list"></div>
+                </div>
+                <div id="practice-sessions" class="golf-entry-list-container">
+                    <h3>Practice Sessions</h3>
+                    <div class="golf-entry-list sessions-list"></div>
                 </div>
             </div>
-
-            <div class="glass-card planner-card">
-                <h3 class="daily-heading">Practice Session</h3>
-                <div class="planner-list" id="planner-list">
-                    <p class="placeholder">Click "Generate Plan" to get started.</p>
-                </div>
-                <button class="cta-button" id="generate-plan-button">Generate a Plan</button>
+            
+            <div class="chart-container">
+                <h3>Score History</h3>
+                <canvas id="golfChart"></canvas>
             </div>
+        </section>
+    </main>
+</div>
 
-            <div class="glass-card journal-card">
-                <h3 class="daily-heading">Swing Journal</h3>
-                <form id="journal-form">
-                    <div class="input-group">
-                        <input type="text" id="shot-type" class="form-input" placeholder="Shot Type (e.g., Driver, 7-iron)">
-                        <input type="text" id="club-details" class="form-input" placeholder="Club (e.g., Driver, 7-iron)">
-                    </div>
-                    <div class="input-group">
-                        <input type="text" id="swing-feel" class="form-input" placeholder="Swing Feel (e.g., smooth tempo, light grip)">
-                    </div>
-                    <div class="input-group">
-                        <input type="url" id="photo-url" class="form-input" placeholder="Photo URL (e.g., from imgur.com)">
-                    </div>
-                    <button type="submit" class="cta-button">Save Journal Entry</button>
-                </form>
-
-                <div class="journal-list" id="journal-list">
-                    </div>
-            </div>
-
-        </main>
-    </div>
-
-    <script src="scripts/golf-trainer.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="golf.js"></script>
+<script src="golf-trainer.js"></script>
 </body>
 </html>
