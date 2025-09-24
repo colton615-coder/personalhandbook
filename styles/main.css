@@ -134,10 +134,10 @@ body {
     color: rgba(255, 255, 255, 0.5);
 }
 
-/* Specific styling for the sets and reps inputs */
+/* Fix for Sets and Reps inputs */
 .sets-input,
 .reps-input {
-    flex: 1;
+    flex: 1; /* This will make them grow and shrink to fit the space */
 }
 
 /* Style for the 'X' button */
@@ -169,7 +169,7 @@ body {
     cursor: pointer;
     margin-top: 10px;
     transition: background-color 0.3s ease, border-color 0.3s ease;
-    width: 100%; /* Makes the button full width */
+    width: 100%;
 }
 
 .cta-button:hover {
