@@ -13,21 +13,22 @@ body {
     color: #fff;
     min-height: 100vh;
     overflow-x: hidden;
-}
-
-.page-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 50px;
-    box-sizing: border-box;
-    width: 100%;
 }
 
-/* New navigation header */
-.nav-header {
+/* A new wrapper to contain all page content and prevent horizontal overflow */
+.page-wrapper {
     width: 100%;
     max-width: 900px;
+    padding-bottom: 50px;
+    box-sizing: border-box;
+}
+
+/* Navigation header */
+.nav-header {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -61,12 +62,11 @@ body {
 
 /* Main Content Container */
 .content-container {
-    max-width: 900px;
     width: 100%;
     text-align: center;
     display: flex;
     flex-direction: column;
-    padding: 0 20px 20px;
+    padding: 0 20px;
     box-sizing: border-box;
     gap: 20px;
 }
@@ -131,6 +131,7 @@ body {
     color: #fff;
     outline: none;
     transition: border-color 0.3s ease;
+    min-width: 0; /* Allows the element to shrink below its content width */
 }
 
 .form-input:focus {
