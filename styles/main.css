@@ -2,6 +2,7 @@
 html {
     scroll-behavior: smooth;
     background-color: #0d1a26;
+    overflow-x: hidden;
 }
 
 body {
@@ -15,6 +16,7 @@ body {
     align-items: center;
     min-height: 100vh;
     padding-bottom: 50px;
+    overflow-x: hidden;
 }
 
 /* New navigation header */
@@ -134,10 +136,10 @@ body {
     color: rgba(255, 255, 255, 0.5);
 }
 
-/* Fix for Sets and Reps inputs */
+/* Specific styling for the sets and reps inputs */
 .sets-input,
 .reps-input {
-    flex: 1; /* This will make them grow and shrink to fit the space */
+    flex: 1;
 }
 
 /* Style for the 'X' button */
