@@ -18,6 +18,7 @@ body {
     align-items: center;
 }
 
+/* Page wrapper for content */
 .page-wrapper {
     width: 100%;
     max-width: 900px;
@@ -65,7 +66,7 @@ body {
     text-align: center;
     display: flex;
     flex-direction: column;
-    padding: 0 20px 20px;
+    padding: 0 20px;
     box-sizing: border-box;
     gap: 20px;
 }
@@ -86,7 +87,14 @@ body {
     margin-bottom: 30px;
 }
 
-/* The core glassmorphism effect for workout blocks */
+/* Layout for all the cards */
+.cards-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* The core glassmorphism effect */
 .glass-card {
     background-color: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
@@ -97,85 +105,108 @@ body {
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-.workout-block {
-    text-align: left;
+/* Daily card specific styles */
+.daily-card {
+    padding: 20px;
 }
 
-.workout-heading {
-    font-size: 1.6em;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 15px;
-}
-
-/* New styles for the sets and reps display */
-.workout-details {
-    padding: 15px;
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-}
-
-.set-header {
-    display: flex;
-    justify-content: space-between;
-    font-weight: 600;
-    font-size: 0.9em;
-    color: #a0aec0;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-}
-
-.set-row {
+.daily-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
     margin-bottom: 10px;
 }
 
-.set-col {
-    flex-basis: 25%;
-    text-align: center;
-    font-weight: 500;
-}
-
-.set-col:first-child {
-    flex-basis: 15%;
-}
-
-.set-input-kg,
-.set-input-reps {
-    flex-basis: 30%;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: none;
-    border-radius: 5px;
-    padding: 8px 10px;
+.daily-heading {
+    font-size: 1.8em;
+    font-weight: 600;
     color: #fff;
-    text-align: center;
+    margin-bottom: 0;
 }
 
-.set-check {
-    color: green;
-    font-size: 1.2em;
-    cursor: pointer;
-}
-
-/* New button styles for the new structure */
-.cta-button {
-    background-color: #4A90E2;
+.completed-button {
+    background: none;
     border: none;
+    color: #a0aec0;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+/* Completed state for a card */
+.daily-card.completed {
+    background-color: rgba(76, 175, 80, 0.2); /* Green tint */
+    border-color: rgba(76, 175, 80, 0.4);
+}
+
+.daily-card.completed .completed-button {
+    color: #4CAF50; /* Green checkmark */
+}
+
+/* Input container for aligning inputs */
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+/* Styling for text input fields */
+.form-input {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
-    padding: 15px;
+    padding: 10px 15px;
+    color: #fff;
+    outline: none;
+    transition: border-color 0.3s ease;
+    min-width: 0;
+}
+
+.form-input:focus {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.form-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Style for the 'Add Exercise' and 'Clear' buttons */
+.cta-button {
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 12px 20px;
     color: #fff;
     font-weight: 600;
-    font-size: 1.1em;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
     width: 100%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
 }
 
 .cta-button:hover {
-    background-color: #357ABD;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Styling for the dynamically added workout list */
+.workout-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.workout-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
 }
