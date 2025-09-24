@@ -1,36 +1,81 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Select the "Add Round" and "Add Session" buttons
-    const addRoundButton = document.querySelector('.add-round-button');
-    const addSessionButton = document.querySelector('.add-session-button');
-    const clearButton = document.querySelector('.clear-all-button');
+    const logRoundForm = document.getElementById('log-round-form');
+    const roundsList = document.getElementById('rounds-list');
 
-    // Add a click listener to the "Add Round" button
-    addRoundButton.addEventListener('click', () => {
-        // Here you would add the code to prompt the user for data
-        // For now, let's just create a dummy item to show it works
-        const roundList = document.getElementById('golf-rounds-list');
-        const newRound = document.createElement('div');
-        newRound.className = 'data-item';
-        newRound.textContent = `New Round: ${new Date().toLocaleDateString()}`;
-        roundList.appendChild(newRound);
+    // Load existing rounds from local storage
+    loadRounds();
+
+    logRoundForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const courseName = document.getElementById('course-name').value;
+        const score = document.getElementById('score').value;
+        const putts = document.getElementById('putts').value;
+        const fairways = document.getElementById('fairways').value;
+
+        if (courseName && score && putts && fairways) {
+            const newRound = {
+                course: courseName,
+                score: score,
+                putts: putts,
+                fairways: fairways,
+                date: new Date().toLocaleDateString()
+            };
+
+            addRoundToDOM(newRound);
+            saveRoundToLocalStorage(newRound);
+            logRoundForm.reset();
+        } else {
+            alert('Please fill out all fields.');
+        }
     });
 
-    // Add a click listener to the "Add Session" button
-    addSessionButton.addEventListener('click', () => {
-        // Here you would add the code for practice session data
-        const sessionList = document.getElementById('practice-sessions-list');
-        const newSession = document.createElement('div');
-        newSession.className = 'data-item';
-        newSession.textContent = `New Session: ${new Date().toLocaleDateString()}`;
-        sessionList.appendChild(newSession);
-    });
+    function addRoundToDOM(round) {
+        // Remove placeholder if it exists
+        const placeholder = roundsList.querySelector('.placeholder');
+        if (placeholder) {
+            placeholder.remove();
+        }
 
-    // Add a click listener to the "Clear All Golf Data" button
-    clearButton.addEventListener('click', () => {
-        const roundList = document.getElementById('golf-rounds-list');
-        const sessionList = document.getElementById('practice-sessions-list');
-        roundList.innerHTML = '';
-        sessionList.innerHTML = '';
-        alert('All golf data has been cleared.');
-    });
+        const roundItem = document.createElement('div');
+        roundItem.className = 'round-item';
+        roundItem.innerHTML = `
+            <div>
+                <h4>${round.course}</h4>
+                <p>${round.date}</p>
+            </div>
+            <div class="round-stats">
+                <div class="stat">
+                    <span class="stat-value">${round.score}</span>
+                    <span>Score</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">${round.putts}</span>
+                    <span>Putts</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">${round.fairways}</span>
+                    <span>Fairways</span>
+                </div>
+            </div>
+        `;
+        roundsList.prepend(roundItem);
+    }
+
+    function saveRoundToLocalStorage(round) {
+        let rounds = JSON.parse(localStorage.getItem('golfRounds')) || [];
+        rounds.unshift(round);
+        localStorage.setItem('golfRounds', JSON.stringify(rounds));
+    }
+
+    function loadRounds() {
+        const rounds = JSON.parse(localStorage.getItem('golfRounds')) || [];
+        if (rounds.length > 0) {
+            const placeholder = roundsList.querySelector('.placeholder');
+            if (placeholder) {
+                placeholder.remove();
+            }
+            rounds.forEach(round => addRoundToDOM(round));
+        }
+    }
 });
