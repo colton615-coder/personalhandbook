@@ -3,19 +3,30 @@ body {
     font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 20px;
-    background-color: #f0f2f5; /* Light gray background */
-    color: #333; /* Darker text for readability */
-    display: flex; /* Use flexbox to center the content */
+    color: #fff; /* Changed text color to white for better contrast */
+    display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Ensures the page takes up the full viewport height */
+    min-height: 100vh;
+
+    /* The new vibrant background! */
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+/* Background animation keyframes */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Main Content Container */
 .content-container {
-    max-width: 900px; /* Limits the container width on large screens */
-    width: 100%; /* Ensures it fills the screen on smaller devices */
-    text-align: center; /* Centers the headings and subtitle */
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
 }
 
 /* Headings and Subtitle */
@@ -23,93 +34,53 @@ body {
     font-size: 2.5em;
     font-weight: 700;
     margin-bottom: 10px;
-    color: #1a202c; /* A darker shade for the title */
+    color: #fff; /* Ensure title is white */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
 
 .subtitle {
     font-size: 1.1em;
     font-weight: 400;
-    color: #4a5568; /* A slightly lighter shade for the subtitle */
+    color: #e2e8f0; /* Lighter white for subtitle */
     margin-bottom: 40px;
 }
 
 /* Layout for all the cards */
 .content-container {
     display: flex;
-    flex-wrap: wrap; /* Allows cards to wrap to the next row */
-    justify-content: center; /* Centers cards in the container */
-    gap: 20px; /* Creates space between the cards */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
 
 /* Link Wrapper for Cards */
-.card-link {
-    text-decoration: none; /* Removes the underline from the link */
-    color: inherit; /* Inherits the text color from the parent */
-}
-
-/* Individual Card Styling */
-.card {
-    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 15px;
-    padding: 25px;
-    width: 250px; /* Fixed width for each card */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
-}
-
-/* Glass Card Effect */
-.glass-card {
-    backdrop-filter: blur(10px); /* Blurs the background behind the card */
-    -webkit-backdrop-filter: blur(10px); /* For Safari support */
-}
-
-/* Hover Effect for Cards */
-.card:hover {
-    transform: translateY(-5px); /* Lifts the card up slightly */
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15); /* Increases the shadow */
-}
-
-/* Card Heading and Paragraph */
-.card h2 {
-    margin-top: 0;
-    font-size: 1.5em;
-    color: #2d3748;
-}
-
-.card p {
-    font-size: 0.9em;
-    color: #718096;
-    margin-bottom: 0;
-}
-/* Styling for the container that holds the glass card */
 .glass-card-container {
-    text-decoration: none; /* Removes the default link underline */
+    text-decoration: none;
     color: inherit;
-    display: block; /* Makes the entire container clickable */
+    display: block;
 }
 
 /* The core glassmorphism effect */
 .glass-card {
-    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
-    backdrop-filter: blur(10px); /* The key to the frosted glass effect */
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
-    border: 1px solid rgba(255, 255, 255, 0.18); /* Light border for definition */
-    border-radius: 20px; /* Rounded corners */
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 20px;
     padding: 30px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* A stronger shadow for depth */
-    transition: transform 0.3s ease; /* Smooth hover effect */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: transform 0.3s ease;
 }
 
 .glass-card:hover {
-    transform: translateY(-5px); /* Lifts the card on hover */
+    transform: translateY(-5px);
 }
 
 /* Typography inside the card */
 .card-title {
     font-size: 1.5em;
     font-weight: 600;
-    color: #fff; /* White text for contrast */
+    color: #fff;
     margin-top: 0;
     margin-bottom: 5px;
 }
@@ -117,6 +88,6 @@ body {
 .card-subtitle {
     font-size: 0.9em;
     font-weight: 400;
-    color: #d1d5db; /* Light gray text */
+    color: #d1d5db;
     margin: 0;
 }
