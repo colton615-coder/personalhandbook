@@ -1,6 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
     const logRoundForm = document.getElementById('log-round-form');
     const roundsList = document.getElementById('rounds-list');
+    const scorecardGrid = document.getElementById('scorecard-grid');
+
+    // Generate scorecard inputs for all 18 holes
+    for (let i = 1; i <= 18; i++) {
+        const holeDiv = document.createElement('div');
+        holeDiv.className = 'hole-input-group';
+        holeDiv.innerHTML = `
+            <label>Hole ${i}</label>
+            <input type="number" class="form-input score-input" placeholder="Score">
+        `;
+        scorecardGrid.appendChild(holeDiv);
+    }
 
     // Load existing rounds from local storage
     loadRounds();
@@ -9,16 +21,28 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
 
         const courseName = document.getElementById('course-name').value;
-        const score = document.getElementById('score').value;
-        const putts = document.getElementById('putts').value;
-        const fairways = document.getElementById('fairways').value;
+        const roundNotes = document.getElementById('round-notes').value;
+        const scoreInputs = document.querySelectorAll('.score-input');
+        
+        const scores = [];
+        let totalScore = 0;
+        let isComplete = true;
 
-        if (courseName && score && putts && fairways) {
+        scoreInputs.forEach(input => {
+            const score = parseInt(input.value);
+            if (isNaN(score)) {
+                isComplete = false;
+            }
+            scores.push(score);
+            totalScore += score;
+        });
+
+        if (courseName && isComplete) {
             const newRound = {
                 course: courseName,
-                score: score,
-                putts: putts,
-                fairways: fairways,
+                scores: scores,
+                totalScore: totalScore,
+                notes: roundNotes,
                 date: new Date().toLocaleDateString()
             };
 
@@ -26,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             saveRoundToLocalStorage(newRound);
             logRoundForm.reset();
         } else {
-            alert('Please fill out all fields.');
+            alert('Please fill out all fields with valid numbers.');
         }
     });
 
@@ -46,20 +70,40 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <div class="round-stats">
                 <div class="stat">
-                    <span class="stat-value">${round.score}</span>
-                    <span>Score</span>
+                    <span class="stat-value">${round.totalScore}</span>
+                    <span>Total Score</span>
                 </div>
-                <div class="stat">
-                    <span class="stat-value">${round.putts}</span>
-                    <span>Putts</span>
+            </div>
+            <button class="expand-button"><i class="fas fa-chevron-down"></i></button>
+            <div class="round-details-expandable" style="display: none;">
+                <div class="scorecard-detail-grid">
+                    ${round.scores.map((score, index) => `
+                        <div class="hole-detail">
+                            <span class="hole-number">Hole ${index + 1}</span>
+                            <span class="hole-score">${score}</span>
+                        </div>
+                    `).join('')}
                 </div>
-                <div class="stat">
-                    <span class="stat-value">${round.fairways}</span>
-                    <span>Fairways</span>
+                <div class="notes-detail">
+                    <p>Notes:</p>
+                    <p>${round.notes || 'No notes for this round.'}</p>
                 </div>
             </div>
         `;
         roundsList.prepend(roundItem);
+
+        const expandButton = roundItem.querySelector('.expand-button');
+        const expandableContent = roundItem.querySelector('.round-details-expandable');
+
+        expandButton.addEventListener('click', () => {
+            if (expandableContent.style.display === "none") {
+                expandableContent.style.display = "block";
+                expandButton.innerHTML = `<i class="fas fa-chevron-up"></i>`;
+            } else {
+                expandableContent.style.display = "none";
+                expandButton.innerHTML = `<i class="fas fa-chevron-down"></i>`;
+            }
+        });
     }
 
     function saveRoundToLocalStorage(round) {
