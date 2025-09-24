@@ -156,49 +156,38 @@ body {
     border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Golf-Trainer-specific styles */
-.drill-item {
-    padding: 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.drill-item:last-child {
-    border-bottom: none;
-}
-
-.drill-item h4 {
-    margin: 0 0 5px 0;
-    font-size: 1.1em;
+/* New Golf Trainer-specific styles */
+.drill-category-heading {
+    text-align: left;
+    font-size: 1.5em;
     color: #fff;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.drill-item {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.drill-item h5 {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
 }
 
 .drill-item p {
-    margin: 0;
-    font-size: 0.9em;
+    font-size: 0.95em;
     color: #a0aec0;
+    margin-top: 5px;
 }
 
 .planner-list p {
-    margin: 0 0 10px 0;
     text-align: left;
+    font-size: 1em;
     color: #a0aec0;
-}
-
-.journal-card h4 {
-    color: #fff;
-    margin: 0 0 5px 0;
-}
-
-#journal-form textarea {
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 10px;
-    color: #fff;
-    box-sizing: border-box;
-    resize: vertical;
-    min-height: 80px;
+    margin-top: 0;
     margin-bottom: 10px;
 }
 
@@ -226,4 +215,17 @@ body {
     height: auto;
     border-radius: 10px;
     margin-top: 10px;
+}
+
+#journal-form textarea {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+    color: #fff;
+    box-sizing: border-box;
+    resize: vertical;
+    min-height: 80px;
+    margin-bottom: 10px;
 }
