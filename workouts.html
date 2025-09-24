@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
 
@@ -15,52 +16,39 @@
         <div class="nav-header">
             <a href="index.html" class="back-button">&lt;</a>
             <div class="header-text-container">
-                <h1 class="title">My Weekly Workout Plan</h1>
+                <h1 class="title">Log Workout</h1>
                 <p class="subtitle">Track your progress and stay on top of your goals.</p>
             </div>
         </div>
 
         <main class="content-container">
-            <div class="cards-grid">
-
-                <div class="glass-card">
-                    <h3 class="daily-heading">Monday</h3>
-                    <div class="workout-form">
-                        <div class="input-group">
-                            <select class="form-input exercise-select">
-                                <option value="">Select an exercise...</option>
-                            </select>
-                        </div>
-                        <div class="input-group">
-                            <input type="text" class="form-input sets-input" placeholder="Sets">
-                            <input type="text" class="form-input reps-input" placeholder="Reps">
-                            <button class="remove-button">X</button>
-                        </div>
-                        <button class="cta-button add-exercise-button">Add Exercise</button>
-                    </div>
-                </div>
-
-                <div class="glass-card">
-                    <h3 class="daily-heading">Tuesday</h3>
-                    <div class="workout-form">
-                        <div class="input-group">
-                            <select class="form-input exercise-select">
-                                <option value="">Select an exercise...</option>
-                            </select>
-                        </div>
-                        <div class="input-group">
-                            <input type="text" class="form-input sets-input" placeholder="Sets">
-                            <input type="text" class="form-input reps-input" placeholder="Reps">
-                            <button class="remove-button">X</button>
-                        </div>
-                        <button class="cta-button add-exercise-button">Add Exercise</button>
-                    </div>
-                </div>
+            <div class="glass-card workout-block">
+                <h3 class="workout-heading">Bench Press (Barbell)</h3>
                 
+                <div class="workout-details">
+                    <div class="set-header">
+                        <span class="set-col">SET</span>
+                        <span class="set-col">KG</span>
+                        <span class="set-col">REPS</span>
+                        <span class="set-col">DONE</span>
+                    </div>
+                    
+                    <div class="set-list">
+                        <div class="set-row">
+                            <span class="set-col">1</span>
+                            <input type="text" class="set-input-kg" placeholder="0">
+                            <input type="text" class="set-input-reps" placeholder="0">
+                            <span class="set-check"><i class="fas fa-check"></i></span>
+                        </div>
+                    </div>
                 </div>
+
+                <button class="cta-button add-set-button">Add Set</button>
+            </div>
+            
+            <button class="cta-button clear-all-button">Clear All Workouts</button>
+
         </main>
-        
-        <button class="cta-button clear-all-button">Clear All Workouts</button>
     </div>
 
     <script src="scripts/workout-builder.js"></script>
