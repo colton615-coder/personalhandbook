@@ -3,57 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workouts</title>
+    <title>My Weekly Workout Plan</title>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <main class="content-container">
+
+        <div class="back-button-container">
+            <a href="index.html" class="back-button">&lt;</a>
+        </div>
+
         <h1 class="title">My Weekly Workout Plan</h1>
         <p class="subtitle">Track your progress and stay on top of your goals.</p>
 
-        <div class="workout-day-card glass-card">
-            <h2>Monday</h2>
-            <div class="exercise-list">
-                <div class="exercise-item glass-item">
-                    <input type="checkbox" id="exercise1">
-                    <label for="exercise1" class="exercise-item-content">
-                        <input type="text" class="exercise-name-input" placeholder="Exercise Name">
-                        <input type="text" class="sets-reps-input" placeholder="Sets x Reps (e.g., 3 x 10)">
-                    </label>
-                    <button class="delete-btn">X</button>
+        <div class="cards-grid">
+
+            <div class="glass-card">
+                <h3 class="daily-heading">Monday</h3>
+                <div class="input-group">
+                    <input type="checkbox">
+                    <input type="text" class="form-input" placeholder="Exercise Name">
                 </div>
-                <div class="exercise-item glass-item">
-                    <input type="checkbox" id="exercise2">
-                    <label for="exercise2" class="exercise-item-content">
-                        <input type="text" class="exercise-name-input" placeholder="Exercise Name">
-                        <input type="text" class="sets-reps-input" placeholder="Sets x Reps (e.g., 3 x 10)">
-                    </label>
-                    <button class="delete-btn">X</button>
+                <div class="input-group">
+                    <input type="text" class="form-input" placeholder="Sets x Reps (e.g., 3 x 10)">
+                    <button class="remove-button">X</button>
                 </div>
+                <button class="cta-button">Add Exercise</button>
             </div>
-            <button class="add-exercise-btn">Add Exercise</button>
-        </div>
 
-        <div class="workout-day-card glass-card">
-            <h2>Tuesday</h2>
-            <div class="exercise-list">
-                <div class="exercise-item glass-item">
-                    <input type="checkbox" id="exercise3">
-                    <label for="exercise3" class="exercise-item-content">
-                        <input type="text" class="exercise-name-input" placeholder="Exercise Name">
-                        <input type="text" class="sets-reps-input" placeholder="Sets x Reps (e.g., 3 x 10)">
-                    </label>
-                    <button class="delete-btn">X</button>
+            <div class="glass-card">
+                <h3 class="daily-heading">Tuesday</h3>
+                <div class="input-group">
+                    <input type="checkbox">
+                    <input type="text" class="form-input" placeholder="Exercise Name">
                 </div>
+                <div class="input-group">
+                    <input type="text" class="form-input" placeholder="Sets x Reps (e.g., 3 x 10)">
+                    <button class="remove-button">X</button>
+                </div>
+                <button class="cta-button">Add Exercise</button>
             </div>
-            <button class="add-exercise-btn">Add Exercise</button>
-        </div>
 
-        <button class="clear-all-btn">Clear All Workouts</button>
+            </div>
 
+        <button class="cta-button">Clear All Workouts</button>
+        
     </main>
+
 </body>
 </html>
