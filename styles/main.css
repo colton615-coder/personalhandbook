@@ -82,3 +82,41 @@ body {
     color: #718096;
     margin-bottom: 0;
 }
+/* Styling for the container that holds the glass card */
+.glass-card-container {
+    text-decoration: none; /* Removes the default link underline */
+    color: inherit;
+    display: block; /* Makes the entire container clickable */
+}
+
+/* The core glassmorphism effect */
+.glass-card {
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+    backdrop-filter: blur(10px); /* The key to the frosted glass effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.18); /* Light border for definition */
+    border-radius: 20px; /* Rounded corners */
+    padding: 30px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* A stronger shadow for depth */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.glass-card:hover {
+    transform: translateY(-5px); /* Lifts the card on hover */
+}
+
+/* Typography inside the card */
+.card-title {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #fff; /* White text for contrast */
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.card-subtitle {
+    font-size: 0.9em;
+    font-weight: 400;
+    color: #d1d5db; /* Light gray text */
+    margin: 0;
+}
