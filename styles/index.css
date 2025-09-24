@@ -1,0 +1,111 @@
+/* General Body and Page Layout */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #0d1a26; /* A dark, deep blue for strong contrast */
+    color: #fff; /* White text for great readability */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Aligns content to the top */
+    min-height: 100vh;
+}
+
+/* Back Button Styles */
+.back-button-container {
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 900px;
+}
+
+.back-button {
+    text-decoration: none;
+    font-size: 2em;
+    font-weight: 600;
+    color: #fff;
+    padding: 0;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Main Content Container */
+.content-container {
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px 20px;
+    box-sizing: border-box;
+    gap: 15px;
+}
+
+/* Headings and Subtitle */
+.title {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.subtitle {
+    font-size: 1.1em;
+    font-weight: 400;
+    color: #a0aec0;
+    margin-bottom: 30px;
+}
+
+/* Layout for all the cards */
+.cards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Link Wrapper for Cards */
+.glass-card-container {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* The core glassmorphism effect */
+.glass-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: transform 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Typography inside the card */
+.card-title {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.card-subtitle {
+    font-size: 0.9em;
+    font-weight: 400;
+    color: #a0aec0;
+    margin: 0;
+}
