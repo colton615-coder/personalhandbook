@@ -1,13 +1,17 @@
 /* General Body and Page Layout */
+html {
+    scroll-behavior: smooth; /* Smooths out scrolling */
+}
+
 body {
     font-family: 'Inter', sans-serif;
     margin: 0;
-    padding: 20px;
-    background-color: #0d1a26; /* A dark, deep blue for strong contrast */
-    color: #fff; /* White text for great readability */
+    padding: 0;
+    background-color: #0d1a26;
+    color: #fff;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Aligns content to the top */
+    align-items: flex-start;
     min-height: 100vh;
 }
 
@@ -86,12 +90,17 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     padding: 30px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    transition: transform 0.3s ease;
+    /* Added a second, glowing shadow */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37),
+                0 0 15px rgba(255, 255, 255, 0); /* starts with no glow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Hover effect with glow */
 .glass-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37),
+                0 0 15px rgba(255, 255, 255, 0.2); /* Glows on hover */
 }
 
 /* Typography inside the card */
