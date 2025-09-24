@@ -85,3 +85,23 @@ body {
     color: #a0aec0;
     margin: 0;
 }
+/* Back Button Styles */
+.back-button-container {
+    position: absolute; /* Positions the button relative to the nearest positioned ancestor (the body) */
+    top: 20px;
+    left: 20px;
+}
+
+.back-button {
+    text-decoration: none;
+    font-size: 2em;
+    font-weight: 600;
+    color: #fff; /* White color for contrast */
+    padding: 10px 15px;
+    border-radius: 50%; /* Makes the button round */
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
