@@ -2,7 +2,7 @@
 body {
     font-family: 'Inter', sans-serif;
     margin: 0;
-    padding: 20px;
+    padding: 0; /* Changed to 0 to remove any white space */
     background-color: #0d1a26;
     color: #fff;
     display: flex;
@@ -11,14 +11,9 @@ body {
     min-height: 100vh;
 }
 
-/* Main Content Container */
-.content-container {
-    max-width: 900px;
-    width: 100%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+/* Ensure the HTML element also covers the full screen */
+html {
+    background-color: #0d1a26;
 }
 
 /* Back Button Styles */
@@ -40,6 +35,16 @@ body {
 
 .back-button:hover {
     background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Main Content Container */
+.content-container {
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 /* Headings and Subtitle */
@@ -120,25 +125,25 @@ body {
 /* Input container for aligning inputs */
 .input-group {
     display: flex;
-    align-items: center;
+    justify-content: space-between; /* Evenly spaces the inputs and button */
     gap: 10px;
     margin-bottom: 15px;
 }
 
 /* Styling for text input fields */
 .form-input {
-    flex: 1; /* Makes the input field grow to fill available space */
+    flex: 1;
     background-color: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     padding: 10px 15px;
     color: #fff;
-    outline: none; /* Removes the default outline on focus */
+    outline: none;
     transition: border-color 0.3s ease;
 }
 
 .form-input:focus {
-    border-color: rgba(255, 255, 255, 0.5); /* Highlight on focus */
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 /* Placeholder text color */
