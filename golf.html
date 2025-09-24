@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
-    <title>My Golf Tracker</title>
+    <title>My Golf Trainer</title>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,45 +16,54 @@
         <div class="nav-header">
             <a href="index.html" class="back-button">&lt;</a>
             <div class="header-text-container">
-                <h1 class="title">My Golf Tracker</h1>
-                <p class="subtitle">Log your rounds, track your progress, and improve your game.</p>
+                <h1 class="title">My Golf Trainer</h1>
+                <p class="subtitle">Drills, practice plans, and swing analysis.</p>
             </div>
         </div>
 
         <main class="content-container">
 
-            <div class="glass-card round-input-card">
-                <h3 class="daily-heading">Log a New Round</h3>
-                <form id="log-round-form">
-                    <div class="input-group">
-                        <input type="text" id="course-name" class="form-input" placeholder="Course Name" required>
-                    </div>
-
-                    <div class="scorecard-grid" id="scorecard-grid">
-                        </div>
-
-                    <div class="notes-section">
-                        <h4>Round Notes</h4>
-                        <textarea id="round-notes" placeholder="Notes on your round, conditions, etc."></textarea>
-                    </div>
-
-                    <button type="submit" class="cta-button">Save Round</button>
-                </form>
-            </div>
-
-            <div class="glass-card round-display-card">
-                <h3 class="daily-heading">Past Rounds</h3>
-                <div class="rounds-list" id="rounds-list">
-                    <div class="round-item placeholder">
-                        <p>No rounds logged yet. Add one above!</p>
+            <div class="glass-card drill-card">
+                <h3 class="daily-heading">Drills & Tips</h3>
+                <div class="drill-list" id="drill-list">
+                    <div class="drill-item placeholder">
+                        <p>Loading drills...</p>
                     </div>
                 </div>
+            </div>
+
+            <div class="glass-card planner-card">
+                <h3 class="daily-heading">Practice Session</h3>
+                <div class="planner-list" id="planner-list">
+                    <p class="placeholder">Click "Generate Plan" to get started.</p>
+                </div>
+                <button class="cta-button" id="generate-plan-button">Generate a Plan</button>
+            </div>
+
+            <div class="glass-card journal-card">
+                <h3 class="daily-heading">Swing Journal</h3>
+                <form id="journal-form">
+                    <div class="input-group">
+                        <input type="text" id="shot-type" class="form-input" placeholder="Shot Type (e.g., Driver, 7-iron)">
+                        <input type="text" id="club-details" class="form-input" placeholder="Club (e.g., Driver, 7-iron)">
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="swing-feel" class="form-input" placeholder="Swing Feel (e.g., smooth tempo, light grip)">
+                    </div>
+                    <div class="input-group">
+                        <input type="url" id="photo-url" class="form-input" placeholder="Photo URL (e.g., from imgur.com)">
+                    </div>
+                    <button type="submit" class="cta-button">Save Journal Entry</button>
+                </form>
+
+                <div class="journal-list" id="journal-list">
+                    </div>
             </div>
 
         </main>
     </div>
 
-    <script src="scripts/golf-tracker.js"></script>
+    <script src="scripts/golf-trainer.js"></script>
 
 </body>
 </html>
