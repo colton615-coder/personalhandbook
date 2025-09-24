@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const DRIL_DATA = [
+    // Data structure for drills (from your provided code)
+    const DRILL_DATA = [
         {
             category: "Full Swing Drills",
             drills: [
                 {
                     name: "L-to-L Drill",
-                    description: "Focus: **Swing Arc & Tempo**. Set up with a short iron. Swing back until your lead arm is parallel to the ground, forming an 'L'. Swing through to a finish where your trail arm is parallel to the ground, forming another 'L'. The motion should be slow and controlled. Why it helps: This drill teaches the core movements of the golf swing, promoting a consistent tempo and a wide, powerful arc without over-swinging.",
+                    description: "Focus: **Swing Arc & Tempo**. Use a short iron. Swing back until your lead arm is parallel to the ground, forming an 'L'. Swing through to a finish where your trail arm is parallel to the ground, forming another 'L'. The motion should be slow and controlled. Why it helps: This drill teaches the core movements of the golf swing, promoting a consistent tempo and a wide, powerful arc without over-swinging.",
                 },
                 {
                     name: "The Towel Drill",
@@ -15,108 +16,113 @@ document.addEventListener('DOMContentLoaded', () => {
                 {
                     name: "Feet-Together Drill",
                     description: "Focus: **Balance & Center of Gravity**. Stand with your feet touching and make full swings with a mid-iron. You can start with half swings and build up to full swings. Why it helps: By eliminating your wide base, this drill forces you to rotate around your core and maintain perfect balance throughout the swing. It highlights any swaying or excessive movement.",
-                },
-                {
-                    name: "Pause at the Top Drill",
-                    description: "Focus: **Tempo & Transition**. Take your normal swing, but when you reach the top of your backswing, pause for a full count of 'one-two' before starting your downswing. Why it helps: This drill eliminates a quick or rushed transition from backswing to downswing, which is a common cause of slices and poor contact. It promotes a smooth, unhurried tempo.",
-                },
-                {
-                    name: "Gate Drill (for path)",
-                    description: "Focus: **Swing Path**. Place two alignment sticks or two old clubs on the ground, one inside and one outside of the ball, creating a 'gate' for your clubhead to pass through. Why it helps: This drill provides immediate feedback on your swing path. If you hit the outside stick, you're swinging 'over the top.' If you hit the inside stick, you're swinging 'from the inside.' It’s a great way to correct a slice or a hook.",
-                },
+                }
             ]
         },
         {
             category: "Short Game Drills",
             drills: [
                 {
-                    name: "The Ladder Drill (Chipping)",
-                    description: "Focus: **Distance Control**. Set up five targets (e.g., towels) at 5-yard increments. Hit 3-5 balls to each target, trying to land them as close as possible. Why it helps: This drill trains your muscle memory for different chip shot distances. It’s a repetitive exercise that helps you gain confidence and consistency with your wedge.",
+                    name: "The 3-6-9 Drill",
+                    description: "Focus: **Distance Control**. Set three targets at 3, 6, and 9 feet from the hole. Hit one ball to each target and repeat until you can consistently hit all three. Why it helps: This drill helps you dial in your putting stroke for different lengths, crucial for eliminating three-putts.",
                 },
                 {
-                    name: "Tee Gate Drill (Putting)",
-                    description: "Focus: **Putting Path**. Place two tees in the ground slightly wider than your putter head, forming a gate. Practice putting through the gate without hitting the tees. Why it helps: This simple drill provides visual feedback on your putting stroke path, ensuring it stays square and on a straight line. It’s essential for consistent putts.",
-                },
-                {
-                    name: "One-Handed Putting",
-                    description: "Focus: **Feel & Control**. Practice putting with only your dominant hand, then switch to your non-dominant hand. Why it helps: This drill isolates the feel and rhythm of your stroke, teaching you to use your shoulders and not just your wrists. It’s excellent for developing a smooth, pendular motion.",
-                },
+                    name: "Chip-and-Stop Drill",
+                    description: "Focus: **High/Soft Chips**. Find a target about 20-30 yards away. Practice hitting a high, soft chip that lands and stops quickly. Why it helps: This teaches you to use the loft of the club to your advantage and control the ball's trajectory and spin, essential for shots around the green.",
+                }
             ]
         },
         {
             category: "Pre-Shot Routine",
             drills: [
                 {
-                    name: "The 3-Step Routine",
-                    description: "Focus: **Consistency**. 1. **Visualize:** Picture the shot you want to hit. 2. **Practice:** Take a single practice swing that matches the feel of your visualized shot. 3. **Commit:** Step up to the ball and hit it without hesitation. Why it helps: A consistent pre-shot routine builds confidence and reduces anxiety. It prepares your mind and body to repeat the same motion every time you swing.",
+                    name: "Visualizing the Shot",
+                    description: "Focus: **Mental Preparation**. Before you address the ball, stand behind it and visualize the entire shot. See the ball flying, landing, and rolling to its final position. Why it helps: This sharpens your focus, helps you commit to the shot, and builds confidence.",
                 },
             ]
         }
     ];
 
-    const plannerList = document.getElementById('planner-list');
-    const journalForm = document.getElementById('journal-form');
-    const journalList = document.getElementById('journal-list');
+    const drillsContainer = document.getElementById('drills-container');
 
-    // Display drills organized by category
+    // Function to display all drills
     function displayDrills() {
-        const drillListContainer = document.getElementById('drill-list');
-        drillListContainer.innerHTML = '';
-        DRIL_DATA.forEach(category => {
-            const categoryHeading = document.createElement('h4');
-            categoryHeading.textContent = category.category;
-            categoryHeading.className = 'drill-category-heading';
-            drillListContainer.appendChild(categoryHeading);
+        drillsContainer.innerHTML = ''; // Clear previous content
+        DRILL_DATA.forEach(category => {
+            const categorySection = document.createElement('div');
+            categorySection.className = 'drill-category';
+            categorySection.innerHTML = `<h3>${category.category}</h3>`;
 
             category.drills.forEach(drill => {
-                const drillElement = document.createElement('div');
-                drillElement.className = 'drill-item';
-                drillElement.innerHTML = `
-                    <h5>${drill.name}</h5>
-                    <p>${drill.description}</p>
+                const drillItem = document.createElement('div');
+                drillItem.className = 'drill-item';
+                drillItem.innerHTML = `
+                    <h4>${drill.name}</h4>
+                    <p>${drill.description.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</p>
                 `;
-                drillListContainer.appendChild(drillElement);
+                categorySection.appendChild(drillItem);
             });
+            drillsContainer.appendChild(categorySection);
         });
     }
 
-    // Generate a structured practice plan
+    // Function to generate and display a practice plan
     function generatePracticePlan() {
-        plannerList.innerHTML = '';
+        const planOutput = document.getElementById('practice-plan-output');
         const plan = [
-            "1. **Warm-up** (5-10 mins): Stretching, light swings, and wedge shots.",
-            "2. **Full Swing Drills** (15 mins): Focus on a specific drill (e.g., The L-to-L Drill).",
-            "3. **Mid-irons** (15 mins): Hit shots with your 7-iron, focusing on feel and tempo.",
-            "4. **Short Game** (15 mins): Focus on putting or chipping drills.",
-            "5. **On-Course Simulation** (15 mins): Imagine playing a hole, hitting each shot from start to finish.",
-            "6. **Cool-down** (5 mins): Light stretching and reflection."
+            "10-minute warm-up (stretches, light swings)",
+            "20 minutes on **Full Swing Drills** (e.g., L-to-L, Towel Drill)",
+            "15 minutes with mid-irons (7-iron, 8-iron)",
+            "20 minutes on **Short Game Drills** (e.g., 3-6-9 Putting, Chipping)",
+            "15 minutes on-course simulation (play imaginary holes from different spots)",
+            "10-minute cool-down"
         ];
-        plan.forEach(step => {
-            const stepElement = document.createElement('p');
-            stepElement.innerHTML = step;
-            plannerList.appendChild(stepElement);
-        });
+        
+        planOutput.innerHTML = '<h4>Your Practice Plan:</h4><ul>' + plan.map(item => `<li>${item.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</li>`).join('') + '</ul>';
     }
 
-    // Handle journal entry submission
-    journalForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const shotType = document.getElementById('shot-type').value;
-        const clubDetails = document.getElementById('club-details').value;
-        const swingFeel = document.getElementById('swing-feel').value;
-        const photoUrl = document.getElementById('photo-url').value;
-        
+    // Journal functionality
+    const addEntryButton = document.getElementById('add-entry-button');
+    const journalList = document.getElementById('journal-list');
+
+    addEntryButton.addEventListener('click', () => {
+        const shotType = document.getElementById('shotType').value;
+        const clubDetails = document.getElementById('clubDetails').value;
+        const swingFeel = document.getElementById('swingFeel').value;
+        const photoFile = document.getElementById('journalPhoto').files[0];
+
         if (shotType && clubDetails) {
-            const newEntry = {
-                shotType,
-                clubDetails,
-                swingFeel,
-                photoUrl,
-                date: new Date().toLocaleDateString()
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                const newEntry = {
+                    shotType,
+                    clubDetails,
+                    swingFeel,
+                    date: new Date().toLocaleDateString(),
+                    photoUrl: reader.result
+                };
+                saveJournalEntry(newEntry);
+                displayJournalEntries();
             };
-            saveJournalEntry(newEntry);
-            displayJournalEntries();
-            journalForm.reset();
+            if (photoFile) {
+                reader.readAsDataURL(photoFile);
+            } else {
+                const newEntry = {
+                    shotType,
+                    clubDetails,
+                    swingFeel,
+                    date: new Date().toLocaleDateString(),
+                    photoUrl: null
+                };
+                saveJournalEntry(newEntry);
+                displayJournalEntries();
+            }
+            
+            // Clear form
+            document.getElementById('shotType').value = '';
+            document.getElementById('clubDetails').value = '';
+            document.getElementById('swingFeel').value = '';
+            document.getElementById('journalPhoto').value = '';
         } else {
             alert('Please fill out at least the shot type and club details.');
         }
