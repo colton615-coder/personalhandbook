@@ -17,7 +17,7 @@
             <a href="index.html" class="back-button">&lt;</a>
             <div class="header-text-container">
                 <h1 class="title">My Golf Tracker</h1>
-                <p class="subtitle">Track your rounds, practice sessions, and notes.</p>
+                <p class="subtitle">Log your rounds, track your progress, and improve your game.</p>
             </div>
         </div>
 
@@ -27,13 +27,17 @@
                 <h3 class="daily-heading">Log a New Round</h3>
                 <form id="log-round-form">
                     <div class="input-group">
-                        <input type="text" id="course-name" class="form-input" placeholder="Course Name">
-                        <input type="text" id="score" class="form-input" placeholder="Score">
+                        <input type="text" id="course-name" class="form-input" placeholder="Course Name" required>
                     </div>
-                    <div class="input-group">
-                        <input type="text" id="putts" class="form-input" placeholder="Putts">
-                        <input type="text" id="fairways" class="form-input" placeholder="Fairways Hit">
+
+                    <div class="scorecard-grid" id="scorecard-grid">
+                        </div>
+
+                    <div class="notes-section">
+                        <h4>Round Notes</h4>
+                        <textarea id="round-notes" placeholder="Notes on your round, conditions, etc."></textarea>
                     </div>
+
                     <button type="submit" class="cta-button">Save Round</button>
                 </form>
             </div>
