@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
     <title>My Weekly Workout Plan</title>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,56 +11,57 @@
 </head>
 <body>
 
-    <div class="nav-header">
-        <a href="index.html" class="back-button">&lt;</a>
-        <div class="header-text-container">
-            <h1 class="title">My Weekly Workout Plan</h1>
-            <p class="subtitle">Track your progress and stay on top of your goals.</p>
+    <div class="page-container">
+        <div class="nav-header">
+            <a href="index.html" class="back-button">&lt;</a>
+            <div class="header-text-container">
+                <h1 class="title">My Weekly Workout Plan</h1>
+                <p class="subtitle">Track your progress and stay on top of your goals.</p>
+            </div>
         </div>
-    </div>
 
-    <main class="content-container">
-        <div class="cards-grid">
+        <main class="content-container">
+            <div class="cards-grid">
 
-            <div class="glass-card">
-                <h3 class="daily-heading">Monday</h3>
-                <div class="workout-form">
-                    <div class="input-group">
-                        <select class="form-input exercise-select">
-                            <option value="">Select an exercise...</option>
-                        </select>
+                <div class="glass-card">
+                    <h3 class="daily-heading">Monday</h3>
+                    <div class="workout-form">
+                        <div class="input-group">
+                            <select class="form-input exercise-select">
+                                <option value="">Select an exercise...</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" class="form-input sets-input" placeholder="Sets">
+                            <input type="text" class="form-input reps-input" placeholder="Reps">
+                            <button class="remove-button">X</button>
+                        </div>
+                        <button class="cta-button add-exercise-button">Add Exercise</button>
                     </div>
-                    <div class="input-group">
-                        <input type="text" class="form-input sets-input" placeholder="Sets">
-                        <input type="text" class="form-input reps-input" placeholder="Reps">
-                        <button class="remove-button">X</button>
-                    </div>
-                    <button class="cta-button add-exercise-button">Add Exercise</button>
                 </div>
-            </div>
 
-            <div class="glass-card">
-                <h3 class="daily-heading">Tuesday</h3>
-                <div class="workout-form">
-                    <div class="input-group">
-                        <select class="form-input exercise-select">
-                            <option value="">Select an exercise...</option>
-                        </select>
+                <div class="glass-card">
+                    <h3 class="daily-heading">Tuesday</h3>
+                    <div class="workout-form">
+                        <div class="input-group">
+                            <select class="form-input exercise-select">
+                                <option value="">Select an exercise...</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" class="form-input sets-input" placeholder="Sets">
+                            <input type="text" class="form-input reps-input" placeholder="Reps">
+                            <button class="remove-button">X</button>
+                        </div>
+                        <button class="cta-button add-exercise-button">Add Exercise</button>
                     </div>
-                    <div class="input-group">
-                        <input type="text" class="form-input sets-input" placeholder="Sets">
-                        <input type="text" class="form-input reps-input" placeholder="Reps">
-                        <button class="remove-button">X</button>
-                    </div>
-                    <button class="cta-button add-exercise-button">Add Exercise</button>
                 </div>
-            </div>
-            
-            </div>
+                
+                </div>
+        </main>
         
         <button class="cta-button clear-all-button">Clear All Workouts</button>
-
-    </main>
+    </div>
 
     <script src="scripts/workout-builder.js"></script>
 
