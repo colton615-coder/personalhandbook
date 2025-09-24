@@ -3,8 +3,8 @@ body {
     font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 20px;
-    background-color: #0d1a26; /* A dark, deep blue for strong contrast */
-    color: #fff; /* White text for great readability */
+    background-color: #0d1a26;
+    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,9 +16,30 @@ body {
     max-width: 900px;
     width: 100%;
     text-align: center;
-    display: flex; /* Use flexbox for the main container */
-    flex-direction: column; /* Stack children vertically */
-    gap: 20px; /* Adds space between headings and cards */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Back Button Styles */
+.back-button-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.back-button {
+    text-decoration: none;
+    font-size: 2em;
+    font-weight: 600;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Headings and Subtitle */
@@ -33,7 +54,7 @@ body {
 .subtitle {
     font-size: 1.1em;
     font-weight: 400;
-    color: #a0aec0; /* A lighter gray for the subtitle */
+    color: #a0aec0;
     margin-bottom: 30px;
 }
 
@@ -42,7 +63,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px; /* Creates space between the cards */
+    gap: 20px;
 }
 
 /* Link Wrapper for Cards */
@@ -50,16 +71,16 @@ body {
     text-decoration: none;
     color: inherit;
     display: block;
-    width: 100%; /* Make cards fill the container on mobile */
-    max-width: 400px; /* Limit card width on larger screens */
+    width: 100%;
+    max-width: 400px;
 }
 
 /* The core glassmorphism effect */
 .glass-card {
-    background-color: rgba(255, 255, 255, 0.1); /* More transparent */
+    background-color: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.05); /* Lighter border */
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
@@ -85,23 +106,78 @@ body {
     color: #a0aec0;
     margin: 0;
 }
-/* Back Button Styles */
-.back-button-container {
-    position: absolute; /* Positions the button relative to the nearest positioned ancestor (the body) */
-    top: 20px;
-    left: 20px;
-}
 
-.back-button {
-    text-decoration: none;
-    font-size: 2em;
+/* New CSS for form elements inside the cards */
+
+/* Daily workout day heading */
+.daily-heading {
+    font-size: 1.8em;
     font-weight: 600;
-    color: #fff; /* White color for contrast */
-    padding: 10px 15px;
-    border-radius: 50%; /* Makes the button round */
-    transition: background-color 0.3s ease;
+    color: #fff;
+    margin-bottom: 20px;
 }
 
-.back-button:hover {
+/* Input container for aligning inputs */
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+/* Styling for text input fields */
+.form-input {
+    flex: 1; /* Makes the input field grow to fill available space */
     background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 10px 15px;
+    color: #fff;
+    outline: none; /* Removes the default outline on focus */
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+    border-color: rgba(255, 255, 255, 0.5); /* Highlight on focus */
+}
+
+/* Placeholder text color */
+.form-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Style for the 'X' button */
+.remove-button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.remove-button:hover {
+    opacity: 1;
+}
+
+/* Style for the 'Add Exercise' and 'Clear' buttons */
+.cta-button {
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 12px 20px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
 }
