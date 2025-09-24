@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Create an option for each workout type
         for (const type in WORKOUTS_LIST) {
             const optgroup = document.createElement('optgroup');
-            optgroup.label = type.charAt(0).toUpperCase() + type.slice(1); // Capitalize the type
+            optgroup.label = type.charAt(0).toUpperCase() + type.slice(1);
             
             WORKOUTS_LIST[type].forEach(workout => {
                 const option = document.createElement('option');
@@ -43,24 +43,62 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Add event listeners for the 'Add Exercise' buttons
-    const addButtons = document.querySelectorAll('.add-exercise-button');
-    addButtons.forEach(button => {
+    // Handle adding exercises
+    document.querySelectorAll('.add-exercise-button').forEach(button => {
         button.addEventListener('click', (event) => {
             const card = event.target.closest('.glass-card');
             const selectedExercise = card.querySelector('.exercise-select').value;
             const sets = card.querySelector('.sets-input').value;
             const reps = card.querySelector('.reps-input').value;
 
-            // Simple validation to ensure something is selected
             if (selectedExercise && sets && reps) {
-                console.log(`Adding exercise: ${selectedExercise}, Sets: ${sets}, Reps: ${reps}`);
-                // In a real app, you would add this to a list on the page
-                // For now, we'll just log it to the console
-                alert(`Added: ${selectedExercise} | Sets: ${sets} | Reps: ${reps}`);
+                // Find or create the list container for the workouts
+                let workoutList = card.querySelector('.workout-list');
+                if (!workoutList) {
+                    workoutList = document.createElement('ul');
+                    workoutList.className = 'workout-list';
+                    // Insert the list before the add button
+                    card.insertBefore(workoutList, button);
+                }
+
+                // Create the new list item
+                const newWorkoutItem = document.createElement('li');
+                newWorkoutItem.className = 'workout-item';
+                newWorkoutItem.innerHTML = `
+                    <span>${selectedExercise}</span>
+                    <span>Sets: ${sets}</span>
+                    <span>Reps: ${reps}</span>
+                    <button class="remove-button">X</button>
+                `;
+                workoutList.appendChild(newWorkoutItem);
+
+                // Clear input fields after adding
+                card.querySelector('.exercise-select').value = '';
+                card.querySelector('.sets-input').value = '';
+                card.querySelector('.reps-input').value = '';
+
+                // Attach a click listener to the new remove button
+                newWorkoutItem.querySelector('.remove-button').addEventListener('click', (e) => {
+                    e.target.closest('li').remove();
+                });
+
             } else {
                 alert("Please select an exercise and enter sets/reps.");
             }
+        });
+    });
+
+    // Handle removing individual exercises
+    document.addEventListener('click', (event) => {
+        if (event.target.classList.contains('remove-button') && event.target.closest('.workout-item')) {
+            event.target.closest('.workout-item').remove();
+        }
+    });
+
+    // Handle the "Clear All Workouts" button
+    document.querySelector('.clear-all-button').addEventListener('click', () => {
+        document.querySelectorAll('.workout-list').forEach(list => {
+            list.innerHTML = ''; // Clears all list items
         });
     });
 });
