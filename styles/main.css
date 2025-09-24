@@ -156,145 +156,74 @@ body {
     border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Golf Tracker specific styles */
-.round-input-card {
-    text-align: left;
-}
-
-.round-display-card {
-    text-align: left;
-}
-
-.rounds-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.round-item {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+/* Golf-Trainer-specific styles */
+.drill-item {
     padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.round-item.placeholder {
-    text-align: center;
-    color: rgba(255, 255, 255, 0.5);
+.drill-item:last-child {
+    border-bottom: none;
 }
 
-.round-stats {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    justify-content: flex-end;
+.drill-item h4 {
+    margin: 0 0 5px 0;
+    font-size: 1.1em;
+    color: #fff;
 }
 
-.stat {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    font-size: 0.9em;
-}
-
-.stat-value {
-    font-size: 1.2em;
-    font-weight: 600;
-}
-
-/* New scorecard grid */
-.scorecard-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.hole-input-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-}
-
-.hole-input-group label {
+.drill-item p {
+    margin: 0;
     font-size: 0.9em;
     color: #a0aec0;
 }
 
-.score-input {
-    text-align: center;
-}
-
-.notes-section {
-    margin-top: 20px;
-}
-
-.notes-section h4 {
+.planner-list p {
+    margin: 0 0 10px 0;
+    text-align: left;
     color: #a0aec0;
-    font-weight: 500;
-    margin-bottom: 10px;
 }
 
-#round-notes {
+.journal-card h4 {
+    color: #fff;
+    margin: 0 0 5px 0;
+}
+
+#journal-form textarea {
     width: 100%;
-    height: 100px;
     background-color: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     padding: 10px;
     color: #fff;
-    outline: none;
-    resize: vertical;
     box-sizing: border-box;
+    resize: vertical;
+    min-height: 80px;
+    margin-bottom: 10px;
 }
 
-/* Expandable content styles */
-.expand-button {
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 1.5em;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
+.journal-entry-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    text-align: left;
 }
 
-.round-details-expandable {
-    display: none;
-    width: 100%;
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.scorecard-detail-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.hole-detail {
-    display: flex;
-    flex-direction: column;
-    font-size: 0.9em;
-}
-
-.hole-number {
-    font-weight: 600;
-    color: #a0aec0;
-}
-
-.hole-score {
+.journal-entry-item h4 {
     font-size: 1.2em;
-    font-weight: 700;
+}
+
+.entry-date {
+    font-size: 0.8em;
+    color: #a0aec0;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
+
+.journal-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 10px;
 }
