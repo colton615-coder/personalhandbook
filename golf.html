@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
     <title>My Golf Tracker</title>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,25 +22,30 @@
         </div>
 
         <main class="content-container">
-            <div class="cards-grid">
-                
-                <div class="glass-card golf-section">
-                    <h3 class="daily-heading">Actual Golf Rounds</h3>
-                    <div class="data-list" id="golf-rounds-list">
-                        </div>
-                    <button class="cta-button add-round-button">Add Round</button>
-                </div>
-                
-                <div class="glass-card golf-section">
-                    <h3 class="daily-heading">Practice Sessions & Notes</h3>
-                    <div class="data-list" id="practice-sessions-list">
-                        </div>
-                    <button class="cta-button add-session-button">Add Session</button>
-                </div>
 
+            <div class="glass-card round-input-card">
+                <h3 class="daily-heading">Log a New Round</h3>
+                <form id="log-round-form">
+                    <div class="input-group">
+                        <input type="text" id="course-name" class="form-input" placeholder="Course Name">
+                        <input type="text" id="score" class="form-input" placeholder="Score">
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="putts" class="form-input" placeholder="Putts">
+                        <input type="text" id="fairways" class="form-input" placeholder="Fairways Hit">
+                    </div>
+                    <button type="submit" class="cta-button">Save Round</button>
+                </form>
             </div>
-            
-            <button class="cta-button clear-all-button">Clear All Golf Data</button>
+
+            <div class="glass-card round-display-card">
+                <h3 class="daily-heading">Past Rounds</h3>
+                <div class="rounds-list" id="rounds-list">
+                    <div class="round-item placeholder">
+                        <p>No rounds logged yet. Add one above!</p>
+                    </div>
+                </div>
+            </div>
 
         </main>
     </div>
