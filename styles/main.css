@@ -87,13 +87,6 @@ body {
     margin-bottom: 30px;
 }
 
-/* Layout for all the cards */
-.cards-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
 /* The core glassmorphism effect */
 .glass-card {
     background-color: rgba(255, 255, 255, 0.1);
@@ -105,42 +98,12 @@ body {
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-/* Daily card specific styles */
-.daily-card {
-    padding: 20px;
-}
-
-.daily-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
+/* Typography inside the card */
 .daily-heading {
     font-size: 1.8em;
     font-weight: 600;
     color: #fff;
-    margin-bottom: 0;
-}
-
-.completed-button {
-    background: none;
-    border: none;
-    color: #a0aec0;
-    font-size: 1.5em;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-/* Completed state for a card */
-.daily-card.completed {
-    background-color: rgba(76, 175, 80, 0.2); /* Green tint */
-    border-color: rgba(76, 175, 80, 0.4);
-}
-
-.daily-card.completed .completed-button {
-    color: #4CAF50; /* Green checkmark */
+    margin-bottom: 20px;
 }
 
 /* Input container for aligning inputs */
@@ -193,20 +156,49 @@ body {
     border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Styling for the dynamically added workout list */
-.workout-list {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 20px;
-    margin-bottom: 0;
+/* Golf Tracker specific styles */
+.round-input-card {
+    text-align: left;
 }
 
-.workout-item {
+.round-display-card {
+    text-align: left;
+}
+
+.rounds-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.round-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    padding: 10px 15px;
-    margin-bottom: 10px;
+}
+
+.round-item.placeholder {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.round-stats {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.stat-value {
+    font-size: 1.2em;
+    font-weight: 600;
 }
