@@ -1,6 +1,7 @@
 /* General Body and Page Layout */
 html {
-    scroll-behavior: smooth; /* Smooths out scrolling */
+    scroll-behavior: smooth;
+    background-color: #0d1a26;
 }
 
 body {
@@ -10,32 +11,13 @@ body {
     background-color: #0d1a26;
     color: #fff;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column; /* Stacks content vertically */
+    justify-content: center; /* Centers content vertically */
+    align-items: center; /* Centers content horizontally */
     min-height: 100vh;
 }
 
-/* Back Button Styles */
-.back-button-container {
-    padding: 20px;
-    width: 100%;
-    box-sizing: border-box;
-    max-width: 900px;
-}
-
-.back-button {
-    text-decoration: none;
-    font-size: 2em;
-    font-weight: 600;
-    color: #fff;
-    padding: 0;
-    border-radius: 50%;
-    transition: background-color 0.3s ease;
-}
-
-.back-button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
+/* Back button styles are no longer needed on this page */
 
 /* Main Content Container */
 .content-container {
@@ -44,9 +26,9 @@ body {
     text-align: center;
     display: flex;
     flex-direction: column;
-    padding: 0 20px 20px;
+    padding: 20px; /* Adjusted padding for better spacing */
     box-sizing: border-box;
-    gap: 15px;
+    gap: 20px;
 }
 
 /* Headings and Subtitle */
@@ -90,9 +72,8 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     padding: 30px;
-    /* Added a second, glowing shadow */
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37),
-                0 0 15px rgba(255, 255, 255, 0); /* starts with no glow */
+                0 0 15px rgba(255, 255, 255, 0);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -100,7 +81,7 @@ body {
 .glass-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37),
-                0 0 15px rgba(255, 255, 255, 0.2); /* Glows on hover */
+                0 0 15px rgba(255, 255, 255, 0.2);
 }
 
 /* Typography inside the card */
