@@ -11,12 +11,17 @@ body {
     padding: 0;
     background-color: #0d1a26;
     color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.page-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
     padding-bottom: 50px;
-    overflow-x: hidden;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 /* New navigation header */
@@ -139,7 +144,7 @@ body {
 /* Specific styling for the sets and reps inputs */
 .sets-input,
 .reps-input {
-    flex: 0 1 45%; /* This will make them take up 45% of the space and shrink if needed */
+    flex: 1;
 }
 
 /* Style for the 'X' button */
