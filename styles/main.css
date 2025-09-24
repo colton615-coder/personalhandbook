@@ -12,20 +12,30 @@ body {
     color: #fff;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding-bottom: 50px; /* Adds space for the bottom button */
+    padding-bottom: 50px;
+}
+
+/* New navigation header */
+.nav-header {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.header-text-container {
+    flex-grow: 1; /* Allows the container to grow and center the text */
+    margin: 0 40px; /* Adds space on the sides so text doesn't hit button */
 }
 
 /* Back Button Styles */
-.back-button-container {
-    padding: 20px;
-    width: 100%;
-    box-sizing: border-box;
-    max-width: 900px;
-}
-
 .back-button {
     text-decoration: none;
     font-size: 2em;
@@ -34,6 +44,8 @@ body {
     padding: 0;
     border-radius: 50%;
     transition: background-color 0.3s ease;
+    position: absolute; /* Positions the button independently */
+    left: 20px; /* Aligns to the left */
 }
 
 .back-button:hover {
@@ -47,7 +59,7 @@ body {
     text-align: center;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 0 20px 20px;
     box-sizing: border-box;
     gap: 20px;
 }
@@ -120,6 +132,11 @@ body {
 
 .form-input::placeholder {
     color: rgba(255, 255, 255, 0.5);
+}
+
+.sets-input,
+.reps-input {
+    flex: 0 0 100px; /* Gives sets and reps inputs a fixed width */
 }
 
 /* Style for the 'X' button */
